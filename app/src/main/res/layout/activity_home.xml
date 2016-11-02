@@ -10,8 +10,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cpsc481.fall2016.uofcreccentret04.Home">
 
-    <TextView
+    <ImageView
+        android:layout_width="448px"
+        android:layout_height="362px"
+        android:src="@drawable/uclogo"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView" />
+
+    <Button
+        android:text="Fitness Centre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Four Eighty One is the BEST!!! WOOOOOO" />
+        android:layout_marginTop="86dp"
+        android:id="@+id/fc_button"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Bookings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fc_button"
+        android:id="@+id/booking_button"
+        android:layout_alignStart="@+id/fc_button"
+        android:layout_alignEnd="@+id/fc_button" />
+
+
 </RelativeLayout>
