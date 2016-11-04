@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_bookings"
     android:layout_width="match_parent"
@@ -8,6 +9,33 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cpsc481.fall2016.uofcreccentret04.bookings">
+    tools:context="cpsc481.fall2016.uofcreccentret04.bookings"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <TextView
+        android:text="Current Bookings"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/currentbookings"
+        android:layout_weight="1"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:onClick="toggleCurrentBookings"/>
+
+    <ImageButton
+        android:layout_height="27dp"
+        android:src="@drawable/expand"
+        android:id="@+id/expandBookings"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:layout_width="44dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:background="@color/white"
+        android:onClick="toggleCurrentBookings"/>
+
+</GridLayout>
