@@ -34,7 +34,8 @@
         android:layout_below="@+id/fc_button"
         android:id="@+id/booking_button"
         android:layout_alignStart="@+id/fc_button"
-        android:layout_alignEnd="@+id/fc_button" />
+        android:layout_alignEnd="@+id/fc_button"
+        android:onClick="toBookings"/>
 
 
 </RelativeLayout>

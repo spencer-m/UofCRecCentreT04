@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".fitness_centre"></activity>
+        <activity android:name=".fitness_centre" />
+        <activity android:name=".bookings"></activity>
     </application>
 
 </manifest>

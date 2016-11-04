@@ -15,8 +15,12 @@ public class Home extends AppCompatActivity {
 
 
     public void toFitnessCentre(View view) {
-
         Intent toFitnessCentre = new Intent(view.getContext(),fitness_centre.class);
         startActivityForResult(toFitnessCentre, 0);
+    }
+
+    public void toBookings(View view) {
+        Intent toBookings = new Intent(view.getContext(),bookings.class);
+        startActivityForResult(toBookings, 0);
     }
 }
