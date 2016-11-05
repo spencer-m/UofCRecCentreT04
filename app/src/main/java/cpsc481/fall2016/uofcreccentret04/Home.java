@@ -23,4 +23,6 @@ public class Home extends AppCompatActivity {
         Intent toBookings = new Intent(view.getContext(),bookings.class);
         startActivityForResult(toBookings, 0);
     }
+
+    // its time
 }
