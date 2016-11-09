@@ -21,6 +21,28 @@ import java.util.List;
 
 public class Home extends AppCompatActivity {
 
+    // http://stackoverflow.com/questions/19244411/center-align-title-in-action-bar-using-styles-in-android
+
+    /**
+     * ViewGroup decorView= (ViewGroup) this.getWindow().getDecorView();
+     LinearLayout root= (LinearLayout) decorView.getChildAt(0);
+     FrameLayout titleContainer= (FrameLayout) root.getChildAt(0);
+     TextView title= (TextView) titleContainer.getChildAt(0);
+     title.setGravity(Gravity.CENTER);
+     */
+
+    /**
+     * https://github.com/umano/AndroidSlidingUpPanel
+     */
+
+    /**
+     * TODO:
+     * http://stackoverflow.com/questions/27564459/avoiding-sliding-panel-collapsed-on-click-with-androidslidinguppanel
+     * http://stackoverflow.com/questions/27201307/how-to-hide-the-umano-slidinguppanel-when-clicking-outside-the-panel
+     * https://github.com/umano/AndroidSlidingUpPanel/issues/476
+     * https://github.com/umano/AndroidSlidingUpPanel/blob/master/library/src/main/java/com/sothree/slidinguppanel/ViewDragHelper.java
+     */
+
     // Menu Dock Object
     private SlidingUpPanelLayout menu_dock;
 

@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
+    sothree:umanoFadeColor="@android:color/holo_purple"
     sothree:umanoPanelHeight="42dp"
     sothree:umanoShadowHeight="4dp">
 
@@ -57,7 +58,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.42">
+        android:layout_weight="0.50">
 
         <ImageView
             android:layout_width="match_parent"
