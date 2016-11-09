@@ -24,53 +24,58 @@ public class Home extends AppCompatActivity {
     // Menu Dock Object
     private SlidingUpPanelLayout menu_dock;
 
+    // ACTIONS TO CREATE THE HOME SCREEN
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         menu_dock = (SlidingUpPanelLayout) findViewById(R.id.menu_dock);
-
         initMenuDock();
     }
 
+    // BUTTON THAT SWITCHES TO THE FITNESS CENTRE SCREEN
     public void toFitnessCentre(View view) {
         Intent toFitnessCentre = new Intent(view.getContext(),fitness_centre.class);
         startActivityForResult(toFitnessCentre, 0);
     }
 
+    // BUTTON THAT SWITCHES TO THE BOOKINGS SCREEN
     public void toBookings(View view) {
         Intent toBookings = new Intent(view.getContext(),bookings.class);
         startActivityForResult(toBookings, 0);
     }
 
     // Menu Dock Code
-
     public void initMenuDock() {
+
+
 
         ListView menuList = (ListView) findViewById(R.id.menu_list);
         menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Home.this, "onItemClick", Toast.LENGTH_SHORT).show();
+                // Code to switch screens would be here
+                Toast.makeText(Home.this, "onItemClick"+position, Toast.LENGTH_SHORT).show();
+                menu_dock.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
             }
         });
 
-        List<String> menuOptions = Arrays.asList(
+        String[] menuOptions ={
                 "We",
                 "Are",
                 "Lit",
-                "Fam"
-        );
+                "Fam",
+        };
 
-        // This is the array adapter, it takes the context of the activity as a
-        // first parameter, the type of list view as a second parameter and your
-        // array as a third parameter.
-        ArrayAdapter<String> menuAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                menuOptions );
+        Integer[] menuImgs={
+                R.drawable.menu1,
+                R.drawable.menu1,
+                R.drawable.menu1,
+                R.drawable.menu1,
+        };
 
+        menu_list_adapter menuAdapter = new menu_list_adapter(this, menuOptions, menuImgs);
         menuList.setAdapter(menuAdapter);
 
         // TODO: figure out tapping on the grey area closes the menu dock
@@ -81,8 +86,6 @@ public class Home extends AppCompatActivity {
                 menu_dock.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
             }
         });
-
-
     }
 
     @Override
