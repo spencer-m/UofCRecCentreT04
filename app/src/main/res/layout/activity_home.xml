@@ -60,19 +60,30 @@
         android:layout_height="match_parent"
         android:layout_weight="0.50">
 
-        <ImageView
+        <Button
             android:layout_width="match_parent"
             android:layout_height="42dp"
-            android:src="@drawable/menu1"
-            android:layout_centerHorizontal="true" />
+            android:text="^^^"
+            android:onClick="openMenu"
+            android:id="@+id/openMenuB" />
 
         <!-- MENU LIST -->
+
         <ListView
-            android:paddingTop="42dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/openMenuB"
             android:id="@+id/menu_list">
         </ListView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:text="vvv"
+            android:layout_below="@id/menu_list"
+            android:onClick="closeMenu"
+            android:id="@+id/closeMenuB"/>
+
 
     </RelativeLayout>
 

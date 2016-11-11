@@ -2,9 +2,11 @@ package cpsc481.fall2016.uofcreccentret04;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,15 +34,8 @@ public class Home extends AppCompatActivity {
      */
 
     /**
+     * Source:
      * https://github.com/umano/AndroidSlidingUpPanel
-     */
-
-    /**
-     * TODO:
-     * http://stackoverflow.com/questions/27564459/avoiding-sliding-panel-collapsed-on-click-with-androidslidinguppanel
-     * http://stackoverflow.com/questions/27201307/how-to-hide-the-umano-slidinguppanel-when-clicking-outside-the-panel
-     * https://github.com/umano/AndroidSlidingUpPanel/issues/476
-     * https://github.com/umano/AndroidSlidingUpPanel/blob/master/library/src/main/java/com/sothree/slidinguppanel/ViewDragHelper.java
      */
 
     // Menu Dock Object
@@ -71,8 +66,6 @@ public class Home extends AppCompatActivity {
     // Menu Dock Code
     public void initMenuDock() {
 
-
-
         ListView menuList = (ListView) findViewById(R.id.menu_list);
         menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -100,12 +93,52 @@ public class Home extends AppCompatActivity {
         menu_list_adapter menuAdapter = new menu_list_adapter(this, menuOptions, menuImgs);
         menuList.setAdapter(menuAdapter);
 
-        // TODO: figure out tapping on the grey area closes the menu dock
-
         menu_dock.setFadeOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 menu_dock.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            }
+        });
+
+        menu_dock.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                menu_dock.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                return false;
+            }
+        });
+
+        menu_dock.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+            @Override
+            public void onPanelSlide(View panel, float slideOffset) {
+            }
+
+            @Override
+            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
+
+                if(menu_dock.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED) {
+
+                    Button ob = (Button) findViewById(R.id.openMenuB);
+                    Button cb = (Button) findViewById(R.id.closeMenuB);
+                    ob.setVisibility(View.INVISIBLE);
+                    cb.setVisibility(View.VISIBLE);
+
+                }
+                else if(menu_dock.getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED) {
+
+                    Button ob = (Button) findViewById(R.id.openMenuB);
+                    Button cb = (Button) findViewById(R.id.closeMenuB);
+                    cb.setVisibility(View.INVISIBLE);
+                    ob.setVisibility(View.VISIBLE);
+
+                }
+                else {
+                    Button ob = (Button) findViewById(R.id.openMenuB);
+                    Button cb = (Button) findViewById(R.id.closeMenuB);
+                    cb.setVisibility(View.INVISIBLE);
+                    ob.setVisibility(View.INVISIBLE);
+
+                }
             }
         });
     }
@@ -119,4 +152,16 @@ public class Home extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+    public void openMenu(View view) {
+        Toast.makeText(Home.this, "OPENMENU", Toast.LENGTH_SHORT).show();
+        menu_dock.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+    }
+
+    public void closeMenu(View view) {
+        Toast.makeText(Home.this, "CLOSEMENU", Toast.LENGTH_SHORT).show();
+        menu_dock.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+    }
+
+
 }

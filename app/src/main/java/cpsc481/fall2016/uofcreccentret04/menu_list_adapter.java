@@ -20,7 +20,6 @@ public class menu_list_adapter extends ArrayAdapter<String> {
 
     public menu_list_adapter(Activity context, String[] itemname, Integer[] imgid) {
         super(context, R.layout.menu_button, itemname);
-        // TODO Auto-generated constructor stub
 
         this.context=context;
         this.itemname=itemname;
