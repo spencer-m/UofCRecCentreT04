@@ -8,4 +8,32 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Panel Menu Theme -->
+    <style name="PanelMain">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+    <style name="PanelSlideMain">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0.50</item>
+    </style>
+    <style name="PanelButtonUp">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:text">^^^</item>
+    </style>
+    <style name="PanelButtonList">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@id/openMenuB</item>
+    </style>
+    <style name="PanelButtonDown">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:text">vvv</item>
+        <item name="android:layout_below">@id/menu_list</item>
+    </style>
+
 </resources>

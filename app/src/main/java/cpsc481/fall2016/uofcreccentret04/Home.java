@@ -31,6 +31,8 @@ public class Home extends AppCompatActivity {
      title.setGravity(Gravity.CENTER);
      */
 
+    // TODO: Stylize Menu Dock
+
     /**
      * Source:
      * https://github.com/umano/AndroidSlidingUpPanel

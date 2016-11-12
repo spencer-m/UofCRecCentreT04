@@ -37,6 +37,6 @@ public class menu_list_adapter extends ArrayAdapter<String> {
         imageView.setImageResource(imgid[position]);
         return rowView;
 
-    };
+    }
 
 }
