@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Recreation Centre App T04</string>
+    <string-array name="courtlist">
+        <item>Racquet</item>
+        <item>Squash</item>
+    </string-array>
 </resources>

@@ -6,7 +6,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 
 public class bookings extends AppCompatActivity {
 
@@ -18,10 +20,16 @@ public class bookings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookings);
         getSupportActionBar().setTitle("Book a Court");
+
         // sets title background color
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E30C00")));
         bar.isHideOnContentScrollEnabled();
+
+        // set spinner outline
+        Spinner courtdropdown = (Spinner) findViewById(R.id.courtdropdown);
+        courtdropdown.setBackgroundResource(R.drawable.spinnerbg);
+
     }
 
     // shows user's current booked rooms

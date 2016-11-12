@@ -22,7 +22,8 @@
         android:layout_weight="1"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
-        android:onClick="toggleCurrentBookings"/>
+        android:onClick="toggleCurrentBookings"
+        android:textSize="18sp" />
 
     <ImageButton
         android:layout_height="27dp"
@@ -37,5 +38,26 @@
         android:paddingBottom="5dp"
         android:background="@color/white"
         android:onClick="toggleCurrentBookings"/>
+
+    <TextView
+        android:text="Court"
+        android:layout_width="79dp"
+        android:layout_height="37dp"
+        android:id="@+id/textView"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/courtdropdown"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_marginTop="30dp"
+        android:spinnerMode="dropdown"
+        android:entries="@array/courtlist" />
 
 </GridLayout>
