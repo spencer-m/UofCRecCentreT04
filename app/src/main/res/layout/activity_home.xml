@@ -5,10 +5,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
     android:id="@+id/menu_dock"
-    sothree:umanoFadeColor="@android:color/holo_purple"
-    sothree:umanoPanelHeight="42dp"
-    sothree:umanoShadowHeight="4dp" >
-
+    sothree:umanoFadeColor="@color/dockcolor"
+    sothree:umanoPanelHeight="@dimen/dockheight"
+    sothree:umanoShadowHeight="@dimen/dockshadow" >
 
     <!-- MAIN CONTENT -->
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
