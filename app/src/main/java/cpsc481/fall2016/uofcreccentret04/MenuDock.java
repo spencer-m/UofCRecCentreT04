@@ -1,6 +1,7 @@
 package cpsc481.fall2016.uofcreccentret04;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,20 +29,54 @@ public class MenuDock {
         menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Code to switch screens would be here
-                //// Menu Buttons here
-                //Intent toFitnessCentre = new Intent(view.getContext(),fitness_centre.class);
-                //startActivityForResult(toFitnessCentre, 0);
-                Toast.makeText(activity, "onItemClick"+position, Toast.LENGTH_SHORT).show();
+
                 menu_dock.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+
+                if (position == 0) {
+                    Intent i = new Intent(view.getContext(),camps.class);
+                    activity.startActivityForResult(i, 0);
+                }
+                else if (position == 1) {
+                    Intent i = new Intent(view.getContext(),activities.class);
+                    activity.startActivityForResult(i, 0);
+                }
+                else if (position == 2) {
+                    Intent i = new Intent(view.getContext(),levelup.class);
+                    activity.startActivityForResult(i, 0);
+                }
+                else if (position == 3) {
+                    Intent i = new Intent(view.getContext(),programs.class);
+                    activity.startActivityForResult(i, 0);
+                }
+                else if (position == 4) {
+                    Intent i = new Intent(view.getContext(),fitness_centre.class);
+                    activity.startActivityForResult(i, 0);
+                }
+                else if (position == 5) {
+                    Intent i = new Intent(view.getContext(),bookings.class);
+                    activity.startActivityForResult(i, 0);
+                }
+                else if (position == 6) {
+                    Intent i = new Intent(view.getContext(),mycalendar.class);
+                    activity.startActivityForResult(i, 0);
+                }
+                else if (position == 7) {
+                    Intent i = new Intent(view.getContext(),Home.class);
+                    activity.startActivityForResult(i, 0);
+                }
+
             }
         });
 
         String[] menuOptions ={
-                "We",
-                "Are",
-                "Lit",
-                "Fam",
+                "Camps",
+                "Activities",
+                "Level Up!",
+                "Programs",
+                "Fitness Centre",
+                "Bookings",
+                "My Calendar",
+                "Home"
         };
 
         Integer[] menuImgs={
@@ -49,6 +84,10 @@ public class MenuDock {
                 R.drawable.menu1,
                 R.drawable.menu1,
                 R.drawable.menu1,
+                R.drawable.menu1,
+                R.drawable.menu1,
+                R.drawable.menu1,
+                R.drawable.menu1
         };
 
         menu_list_adapter menuAdapter = new menu_list_adapter(activity, menuOptions, menuImgs);

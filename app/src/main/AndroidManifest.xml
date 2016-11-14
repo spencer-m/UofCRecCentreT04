@@ -16,7 +16,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".fitness_centre" />
-        <activity android:name=".bookings"></activity>
+        <activity android:name=".bookings" />
+        <activity android:name=".levelup" />
+        <activity android:name=".camps" />
+        <activity android:name=".activities" />
+        <activity android:name=".mycalendar" />
+        <activity android:name=".programs"></activity>
     </application>
 
 </manifest>

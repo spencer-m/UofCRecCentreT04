@@ -53,18 +53,6 @@ public class Home extends AppCompatActivity {
         md = new MenuDock(this);
     }
 
-    // BUTTON THAT SWITCHES TO THE FITNESS CENTRE SCREEN
-    public void toFitnessCentre(View view) {
-        Intent toFitnessCentre = new Intent(view.getContext(),fitness_centre.class);
-        startActivityForResult(toFitnessCentre, 0);
-    }
-
-    // BUTTON THAT SWITCHES TO THE BOOKINGS SCREEN
-    public void toBookings(View view) {
-        Intent toBookings = new Intent(view.getContext(),bookings.class);
-        startActivityForResult(toBookings, 0);
-    }
-
     @Override
     public void onBackPressed() {
         if (md.menu_dock != null &&
