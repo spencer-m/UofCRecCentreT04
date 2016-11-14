@@ -1,5 +1,6 @@
 package cpsc481.fall2016.uofcreccentret04;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
@@ -76,5 +77,17 @@ public class bookings extends AppCompatActivity {
 
             showbookings = false;
         }
+    }
+
+    // Handles Cancel button
+    public void toHome(View view) {
+        Intent toHome = new Intent(view.getContext(), Home.class);
+        startActivityForResult(toHome, 0);
+        finish();
+    }
+
+    // Handles Search button
+    public void toSearch(View view) {
+        // open search activity
     }
 }
