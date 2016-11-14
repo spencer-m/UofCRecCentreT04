@@ -37,7 +37,7 @@ public class MenuDock {
                     activity.startActivityForResult(i, 0);
                 }
                 else if (position == 1) {
-                    Intent i = new Intent(view.getContext(),activities.class);
+                    Intent i = new Intent(view.getContext(),programs.class);
                     activity.startActivityForResult(i, 0);
                 }
                 else if (position == 2) {
@@ -45,7 +45,7 @@ public class MenuDock {
                     activity.startActivityForResult(i, 0);
                 }
                 else if (position == 3) {
-                    Intent i = new Intent(view.getContext(),programs.class);
+                    Intent i = new Intent(view.getContext(),activities.class);
                     activity.startActivityForResult(i, 0);
                 }
                 else if (position == 4) {
@@ -70,9 +70,9 @@ public class MenuDock {
 
         String[] menuOptions ={
                 "Camps",
-                "Activities",
-                "Level Up!",
                 "Programs",
+                "Level Up!",
+                "Activities",
                 "Fitness Centre",
                 "Bookings",
                 "My Calendar",
