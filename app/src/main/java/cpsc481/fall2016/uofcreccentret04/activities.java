@@ -1,7 +1,10 @@
 package cpsc481.fall2016.uofcreccentret04;
 
+import android.support.annotation.StringRes;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
@@ -14,7 +17,11 @@ public class activities extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activities);
-        getSupportActionBar().setTitle("Activities");
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.customaction_bar);
+        TextView tv = (TextView) findViewById(R.id.headerText);
+        tv.setText(R.string.activities);
 
 
         // Menu Dock Init

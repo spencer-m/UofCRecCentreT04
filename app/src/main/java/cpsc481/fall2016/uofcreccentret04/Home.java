@@ -1,35 +1,14 @@
 package cpsc481.fall2016.uofcreccentret04;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 
 public class Home extends AppCompatActivity {
-
-    // http://stackoverflow.com/questions/19244411/center-align-title-in-action-bar-using-styles-in-android
-
-    /**
-     * ViewGroup decorView= (ViewGroup) this.getWindow().getDecorView();
-     LinearLayout root= (LinearLayout) decorView.getChildAt(0);
-     FrameLayout titleContainer= (FrameLayout) root.getChildAt(0);
-     TextView title= (TextView) titleContainer.getChildAt(0);
-     title.setGravity(Gravity.CENTER);
-     */
 
     // TODO: Stylize Menu Dock
 

@@ -4,4 +4,12 @@
         <item>Racquet</item>
         <item>Squash</item>
     </string-array>
+
+    <string name="camps">Camps</string>
+    <string name="activities">Activities</string>
+    <string name="levelup">Level Up!</string>
+    <string name="programs">Programs</string>
+    <string name="fitness_centre">Fitness Centre</string>
+    <string name="bookings">Bookings</string>
+    <string name="mycalendar">My Calendar</string>
 </resources>
