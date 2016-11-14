@@ -10,6 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class bookings extends AppCompatActivity {
 
     // tracks if current bookings is shown
@@ -26,9 +29,30 @@ public class bookings extends AppCompatActivity {
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E30C00")));
         bar.isHideOnContentScrollEnabled();
 
-        // set spinner outline
-        Spinner courtdropdown = (Spinner) findViewById(R.id.courtdropdown);
-        courtdropdown.setBackgroundResource(R.drawable.spinnerbg);
+        // Populate hour spinner
+        // create data for spinner
+        List<String> hour_arr_data = new ArrayList<String>();
+        for(int i = 1; i <= 12; i++){
+            hour_arr_data.add((Integer.toString(i)));
+        }
+        // enter data to spinner
+        Spinner hour_spinner = (Spinner)findViewById(R.id.hour_booking_dropdown);
+        ArrayAdapter<String> hour_spinner_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, hour_arr_data);
+        hour_spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        hour_spinner.setAdapter(hour_spinner_adapter);
+
+        // Populate minute spinners
+        // create data for spinner
+        List<String> min_arr_data = new ArrayList<String>();
+        for(int i = 0; i <= 59; i++){
+            min_arr_data.add((Integer.toString(i)));
+        }
+        // enter data to spinner
+        Spinner min_spinner = (Spinner)findViewById(R.id.minute_booking_dropdown);
+        ArrayAdapter<String> leftmin_spinner_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, min_arr_data);
+        leftmin_spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        min_spinner.setAdapter(leftmin_spinner_adapter);
+
 
     }
 
