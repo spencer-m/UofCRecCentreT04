@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+
 
 public class activity_fitness_centre_t extends AppCompatActivity {
 
@@ -37,6 +39,9 @@ public class activity_fitness_centre_t extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    // Menu Dock Object
+    MenuDock md;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,9 @@ public class activity_fitness_centre_t extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        // Menu Dock Init
+        md = new MenuDock(this);
 
         /**
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -185,6 +193,16 @@ public class activity_fitness_centre_t extends AppCompatActivity {
                     return "SECTION 3";
             }
             return null;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (md.menu_dock != null &&
+                (md.menu_dock.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || md.menu_dock.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {
+            md.menu_dock.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        } else {
+            super.onBackPressed();
         }
     }
 }
