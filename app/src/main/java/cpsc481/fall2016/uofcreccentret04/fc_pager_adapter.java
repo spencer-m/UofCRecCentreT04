@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 public class fc_pager_adapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
 
-    public PagerAdapter(FragmentManager fm, int NumOfTabs) {
+    public fc_pager_adapter (FragmentManager fm, int NumOfTabs) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
     }
