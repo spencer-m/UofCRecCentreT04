@@ -18,7 +18,7 @@
         android:paddingStart="10dp"
         android:paddingTop="10dp"
         android:paddingEnd="10dp"
-        android:groupIndicator="@drawable/expand"
+        android:groupIndicator="@drawable/currentbookings_selector"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="0.5dp"
         android:layoutDirection="rtl"
