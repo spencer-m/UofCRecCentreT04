@@ -31,4 +31,5 @@ dependencies {
         mavenCentral()
     }
     compile 'com.sothree.slidinguppanel:library:3.3.1'
+    compile 'com.google.android.gms:play-services:7.8.0'
 }

@@ -12,11 +12,6 @@ public class Home extends AppCompatActivity {
 
     // TODO: Stylize Menu Dock
 
-    /**
-     * Source:
-     * https://github.com/umano/AndroidSlidingUpPanel
-     */
-
     // Menu Dock Object
     MenuDock md;
 

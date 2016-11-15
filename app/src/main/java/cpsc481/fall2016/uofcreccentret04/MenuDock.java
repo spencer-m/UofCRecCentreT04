@@ -17,6 +17,11 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 public class MenuDock {
 
+    /**
+     * Source:
+     * https://github.com/umano/AndroidSlidingUpPanel
+     */
+
     public SlidingUpPanelLayout menu_dock;
     private Activity activity;
 
