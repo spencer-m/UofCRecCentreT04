@@ -16,7 +16,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".fitness_centre" />
-        <activity android:name=".bookings"></activity>
+        <activity android:name=".bookings" />
+        <activity
+            android:name=".activity_fitness_centre_t"
+            android:label="@string/title_activity_activity_fitness_centre_t"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
