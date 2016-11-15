@@ -1,63 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_bookings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cpsc481.fall2016.uofcreccentret04.bookings"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="cpsc481.fall2016.uofcreccentret04.bookings">
 
-    <TextView
-        android:text="Current Bookings"
-        android:textColor="@color/black"
+
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id = "@+id/currentbookings"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:groupIndicator="@drawable/currentbookings_selector"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"
+        android:layoutDirection="rtl"
+        />
+
+    <!-- <TextView
+        android:id="@+id/currentbookings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/currentbookings"
-        android:layout_weight="1"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
         android:onClick="toggleCurrentBookings"
-        android:textSize="18sp" />
+        android:paddingEnd="10dp"
+        android:paddingTop="20dp"
+        android:paddingStart="10dp"
+        android:text="Current Bookings"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <ImageButton
-        android:layout_height="27dp"
-        android:src="@drawable/expand"
         android:id="@+id/expandBookings"
-        android:layout_row="0"
-        android:layout_column="1"
-        android:layout_width="44dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="5dp"
-        android:background="@color/white"
-        android:onClick="toggleCurrentBookings"/>
-
-    <TextView
-        android:text="Court"
-        android:layout_width="79dp"
-        android:layout_height="37dp"
-        android:id="@+id/textView"
-        android:layout_row="1"
-        android:layout_column="0"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-
-    <Spinner
-        android:layout_width="145dp"
+        android:layout_width="27dp"
         android:layout_height="wrap_content"
-        android:id="@+id/courtdropdown"
-        android:layout_row="1"
-        android:layout_column="1"
-        android:layout_marginTop="30dp"
-        android:spinnerMode="dropdown"
-        android:entries="@array/courtlist" />
+        android:paddingTop="20dp"
+        android:paddingStart="10dp"
+        android:background="@color/white"
+        android:onClick="toggleCurrentBookings"
+        android:src="@drawable/expand"
+        android:layout_toEndOf="@id/currentbookings"/> -->
 
-</GridLayout>
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:id="@+id/infofields_booking"
+        android:layout_below="@id/currentbookings">
+
+        <TextView
+            android:id="@+id/court_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="Court"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_column="0"
+            android:layout_row="0"/>
+
+        <Spinner
+            android:id="@+id/court_booking_dropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/courtlist"
+            android:spinnerMode="dropdown"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/date_booking_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="Date"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_column="0"
+            android:layout_row="1"/>
+
+        <Spinner
+            android:id="@+id/month_booking_dropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:entries="@array/months"
+            android:spinnerMode="dropdown"
+            android:layout_column="1"
+            android:layout_row="1"/>
+
+        <Spinner
+            android:id="@+id/day_booking_dropdown"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:entries="@array/month_days"
+            android:spinnerMode="dropdown"
+            android:layout_column="2"
+            android:layout_row="1"/>
+
+        <TextView
+            android:text="Time"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_column="0"
+            android:layout_row="2"/>
+
+        <Spinner
+            android:id="@+id/year_booking_dropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:entries="@array/years"
+            android:spinnerMode="dropdown"
+            android:layout_column="3"
+            android:layout_row="1"/>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_columnSpan="3">
+
+            <Spinner
+                android:id="@+id/hour_booking_dropdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:spinnerMode="dropdown"/>
+
+            <TextView
+                android:text=":"
+                android:id="@+id/semicolon_booking"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="30dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/hour_booking_dropdown"/>
+
+            <Spinner
+                android:id="@+id/minute_booking_dropdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="20dp"
+                android:spinnerMode="dropdown"
+                android:layout_toEndOf="@id/semicolon_booking"/>
+
+
+            <Spinner
+                android:id="@+id/ampm_booking_dropdown"
+                android:entries="@array/ampm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:spinnerMode="dropdown"
+                android:layout_alignTop="@+id/minute_booking_dropdown"
+                android:layout_toEndOf="@+id/minute_booking_dropdown" />
+
+        </RelativeLayout>
+
+
+        <Button
+            android:text="Cancel"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancel_booking"
+            android:layout_marginBottom="122dp"
+            android:background="@android:color/holo_red_dark"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_marginTop="150dp"
+            android:onClick="toHome"/>
+
+        <Button
+            android:text="Search"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_booking"
+            android:layout_marginBottom="122dp"
+            android:background="@android:color/holo_green_light"
+            android:layout_row="3"
+            android:layout_column="3"
+            android:layout_marginTop="150dp"
+            android:onClick="toSearch"/>
+
+    </GridLayout>
+
+</RelativeLayout>
