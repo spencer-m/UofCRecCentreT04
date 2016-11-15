@@ -1,27 +1,28 @@
 package cpsc481.fall2016.uofcreccentret04;
 
+import android.support.annotation.StringRes;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.widget.TextView;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
-
-public class Home extends AppCompatActivity {
-
-    // TODO: Stylize Menu Dock
+public class activities extends AppCompatActivity {
 
     // Menu Dock Object
     MenuDock md;
 
-    // ACTIONS TO CREATE THE HOME SCREEN
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        setContentView(R.layout.activity_activities);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.customaction_bar);
+        TextView tv = (TextView) findViewById(R.id.headerText);
+        tv.setText(R.string.activities);
+
 
         // Menu Dock Init
         md = new MenuDock(this);
@@ -36,5 +37,4 @@ public class Home extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
 }

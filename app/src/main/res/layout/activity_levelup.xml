@@ -23,22 +23,39 @@
         tools:context="cpsc481.fall2016.uofcreccentret04.Home">
 
         <ImageView
-            android:layout_width="300dp"
-            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:paddingTop="30dp"
-            android:src="@drawable/uclogo"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/uclogohome" />
+            android:src="@drawable/levelup"
+            android:layout_centerHorizontal="true"/>
 
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="75dp"
-            android:src="@drawable/ucname"
-            android:layout_centerVertical="true"
+        <SurfaceView
+            android:layout_width="640px"
+            android:layout_height="480px"
+            android:id="@+id/levelup_camera"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/levelup_code"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:text="Nothing to read."
+            android:layout_above="@+id/levelup_camera"
             android:layout_centerHorizontal="true"
-            android:id="@+id/ucnamehome"
-            android:layout_below="@id/uclogohome"
-            android:paddingTop="25dp"/>
+            android:paddingBottom="15dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Scanning"
+            android:onClick="levelup_scannow"
+            android:id="@+id/levelup_scanb"
+            android:layout_above="@+id/levelup_code"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="28dp" />
 
     </RelativeLayout>
     <!-- END MAIN CONTENT -->
