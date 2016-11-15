@@ -6,18 +6,27 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class bookings extends AppCompatActivity {
 
     // tracks if current bookings is shown
     boolean showbookings = false;
+    ExpandableListView currentbookingsListView;
+    ExpandableListAdapter currentbookingsListAdapter;
+    List<String> currentbookingsListTitle;
+    HashMap<String, List<String>> currentbookingsListDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +63,49 @@ public class bookings extends AppCompatActivity {
         leftmin_spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         min_spinner.setAdapter(leftmin_spinner_adapter);
 
+        // init current bookings
+        currentbookingsListView = (ExpandableListView) findViewById(R.id.currentbookings);
+        currentbookingsListDetail = CurrentBookingsListDataPump.getData();
+        currentbookingsListTitle = new ArrayList<String>(currentbookingsListDetail.keySet());
+        currentbookingsListAdapter = new CurrentBookingsListAdapter(this, currentbookingsListTitle, currentbookingsListDetail);
+        currentbookingsListView.setAdapter(currentbookingsListAdapter);
+        currentbookingsListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener(){
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                Toast.makeText(getApplicationContext(), currentbookingsListTitle.get(groupPosition) + "List Expanded.",
+                        Toast.LENGTH_SHORT).show();
 
+            }
+        });
+
+        currentbookingsListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener(){
+            @Override
+            public void onGroupCollapse(int groupPosition){
+                Toast.makeText(getApplicationContext(),
+                        currentbookingsListTitle.get(groupPosition) + "List collapsed.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        currentbookingsListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener(){
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        currentbookingsListTitle.get(groupPosition)
+                                + " -> "
+                                + currentbookingsListDetail.get(
+                                currentbookingsListTitle.get(groupPosition)).get(
+                                childPosition), Toast.LENGTH_SHORT
+                ).show();
+                return false;
+            }
+        });
     }
 
     // shows user's current booked rooms
-    public void toggleCurrentBookings(View view) {
+   /* public void toggleCurrentBookings(View view) {
 
         ImageButton button = (ImageButton)findViewById(R.id.expandBookings);
 
@@ -77,7 +124,7 @@ public class bookings extends AppCompatActivity {
 
             showbookings = false;
         }
-    }
+    }*/
 
     // Handles Cancel button
     public void toHome(View view) {
@@ -90,4 +137,6 @@ public class bookings extends AppCompatActivity {
     public void toSearch(View view) {
         // open search activity
     }
+
+
 }

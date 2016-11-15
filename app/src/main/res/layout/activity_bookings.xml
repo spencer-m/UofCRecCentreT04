@@ -11,13 +11,20 @@
     tools:context="cpsc481.fall2016.uofcreccentret04.bookings">
 
 
-    <!--<ExpandableListView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id = "@+id/currentbookings"
-        /> -->
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:groupIndicator="@drawable/expand"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"
+        android:layoutDirection="rtl"
+        />
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/currentbookings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +45,7 @@
         android:background="@color/white"
         android:onClick="toggleCurrentBookings"
         android:src="@drawable/expand"
-        android:layout_toEndOf="@id/currentbookings"/>
+        android:layout_toEndOf="@id/currentbookings"/> -->
 
     <GridLayout
         android:layout_width="wrap_content"
