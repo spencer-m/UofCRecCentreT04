@@ -54,7 +54,7 @@ public class MenuDock {
                     activity.startActivityForResult(i, 0);
                 }
                 else if (position == 4) {
-                    Intent i = new Intent(view.getContext(),fitness_centre.class);
+                    Intent i = new Intent(view.getContext(),activity_fitness_centre_t.class);
                     activity.startActivityForResult(i, 0);
                 }
                 else if (position == 5) {
