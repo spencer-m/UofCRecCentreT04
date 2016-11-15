@@ -38,7 +38,7 @@ public class activity_fitness_centre_t extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activity_fitness_centre_t);
+        setContentView(R.layout.activity_fitness_centre_t);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

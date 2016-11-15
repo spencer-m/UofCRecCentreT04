@@ -13,6 +13,6 @@ package cpsc481.fall2016.uofcreccentret04;
 public class activity_fitness_centre_t_tab1_overview extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fitness_centre_t_tab1_overview, container, false);
+        return inflater.inflate(R.layout.fitness_centre_t1_overview, container, false);
     }
 }
