@@ -24,7 +24,12 @@
         <activity android:name=".camps" />
         <activity android:name=".activities" />
         <activity android:name=".mycalendar" />
-        <activity android:name=".programs"></activity>
+        <activity android:name=".programs"/>
+        <activity android:name=".bookings" />
+        <activity
+            android:name=".activity_fitness_centre_t"
+            android:label="@string/title_activity_activity_fitness_centre_t"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

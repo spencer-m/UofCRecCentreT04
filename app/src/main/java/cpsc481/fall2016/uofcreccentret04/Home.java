@@ -25,7 +25,6 @@ public class Home extends AppCompatActivity {
 
         // Menu Dock Init
         md = new MenuDock(this);
-    }
 
     @Override
     public void onBackPressed() {
@@ -35,6 +34,5 @@ public class Home extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
-    }
 
 }
