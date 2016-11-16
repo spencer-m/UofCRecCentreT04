@@ -70,4 +70,21 @@
         <item>AM</item>
         <item>PM</item>
     </string-array>
+
+    <string name="camps">Camps</string>
+    <string name="activities">Activities</string>
+    <string name="levelup">Level Up!</string>
+    <string name="programs">Programs</string>
+    <string name="fitness_centre">Fitness Centre</string>
+    <string name="bookings">Bookings</string>
+    <string name="mycalendar">My Calendar</string>
+
+    <string name="startscan">Start Scanning</string>
+    <string name="stopscan">Stop Scanning</string>
+    <string name="fc_overview_desc">Description of Fitness Centre</string>
+    <string name="fc_overview_hours_head">Hours:</string>
+    <string name="fc_hours_mon">Monday</string>
+    <string name="title_activity_activity_fitness_centre_t">activity_fitness_centre_t</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

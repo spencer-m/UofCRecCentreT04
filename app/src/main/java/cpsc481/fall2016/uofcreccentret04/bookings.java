@@ -15,6 +15,8 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,11 +30,17 @@ public class bookings extends AppCompatActivity {
     List<String> currentbookingsListTitle;
     HashMap<String, List<String>> currentbookingsListDetail;
 
+    // Menu Dock Object
+    MenuDock md;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookings);
         getSupportActionBar().setTitle("Book a Court");
+
+        // Menu Dock Init
+        md = new MenuDock(this);
 
         // sets title background color
         ActionBar bar = getSupportActionBar();
@@ -136,6 +144,16 @@ public class bookings extends AppCompatActivity {
     // Handles Search button
     public void toSearch(View view) {
         // open search activity
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (md.menu_dock != null &&
+                (md.menu_dock.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || md.menu_dock.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {
+            md.menu_dock.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        } else {
+            super.onBackPressed();
+        }
     }
 
 

@@ -22,23 +22,10 @@
         android:background="#E30C00"
         tools:context="cpsc481.fall2016.uofcreccentret04.Home">
 
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="200dp"
-            android:paddingTop="30dp"
-            android:src="@drawable/uclogo"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/uclogohome" />
-
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="75dp"
-            android:src="@drawable/ucname"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/ucnamehome"
-            android:layout_below="@id/uclogohome"
-            android:paddingTop="25dp"/>
+        <CalendarView
+            android:id="@+id/simpleCalendarView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
 
     </RelativeLayout>
     <!-- END MAIN CONTENT -->

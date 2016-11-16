@@ -6,4 +6,5 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="red">#E30C00</color>
+    <color name="dockcolor">#E6F44B42</color>
 </resources>
