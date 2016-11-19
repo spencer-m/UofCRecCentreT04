@@ -81,7 +81,7 @@ public class CalendarHandler {
         return (event.getStartTime().get(Calendar.YEAR) == year && event.getStartTime().get(Calendar.MONTH) == month - 1) || (event.getEndTime().get(Calendar.YEAR) == year && event.getEndTime().get(Calendar.MONTH) == month - 1);
     }
 
-    public WeekView.EventClickListener theEventClickListener() {
+    public WeekView.EventClickListener simpleEventClickListener() {
 
         WeekView.EventClickListener r = new WeekView.EventClickListener() {
             @Override

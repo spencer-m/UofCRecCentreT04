@@ -38,7 +38,7 @@ public class mycalendar extends AppCompatActivity{
         weekView = (WeekView) findViewById(R.id.weekView);
 
         // Set an action when any event is clicked.
-        weekView.setOnEventClickListener(ch.theEventClickListener());
+        weekView.setOnEventClickListener(ch.simpleEventClickListener());
 
         // The week view has infinite scrolling horizontally. We have to provide the events of a
         // month every time the month changes on the week view.
