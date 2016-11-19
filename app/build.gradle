@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 23
     buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "cpsc481.fall2016.uofcreccentret04"
@@ -24,7 +24,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:appcompat-v7:23.0.0'
     testCompile 'junit:junit:4.12'
 
     repositories {
@@ -32,5 +32,6 @@ dependencies {
     }
     compile 'com.sothree.slidinguppanel:library:3.3.1'
     compile 'com.google.android.gms:play-services:7.8.0'
-    compile 'com.android.support:design:22.2.1'
+    compile 'com.android.support:design:23.0.0'
+    compile 'com.github.alamkanak:android-week-view:1.2.6'
 }

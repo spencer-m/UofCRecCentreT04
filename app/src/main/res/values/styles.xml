@@ -8,6 +8,7 @@
     </style>
 
     <!-- Panel Menu Theme -->
+    <!-- TODO:  Weight out spacing on list -->
     <style name="PanelMain">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -17,6 +18,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">0.50</item>
+        <item name="android:background">@color/red</item>
     </style>
     <style name="PanelButtonUp">
         <item name="android:layout_width">match_parent</item>
