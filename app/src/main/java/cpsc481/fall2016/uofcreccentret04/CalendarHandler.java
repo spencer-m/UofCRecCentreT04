@@ -1,6 +1,8 @@
 package cpsc481.fall2016.uofcreccentret04;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.RectF;
@@ -18,6 +20,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -42,6 +45,81 @@ public class CalendarHandler {
         initLocalCal(); // initialize files required for local cal; only for first run
         readLocal(); // read local data and store
         readGCal(); // read google calendar data and store
+    }
+
+    /******************
+     *   Listeners    *
+     ******************/
+
+    public MonthLoader.MonthChangeListener theMonthChangeListener() {
+
+        MonthLoader.MonthChangeListener r = new MonthLoader.MonthChangeListener() {
+
+            @Override
+            public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+
+                List<WeekViewEvent> allevents = new ArrayList<>(localevents);
+                allevents.addAll(googleevents);
+
+                // Return only the events that matches newYear and newMonth.
+                List<WeekViewEvent> matchedEvents = new ArrayList<WeekViewEvent>();
+
+                for (WeekViewEvent event : allevents) {
+                    if (eventMatches(event, newYear, newMonth)) {
+                        matchedEvents.add(event);
+                    }
+                }
+
+                return matchedEvents;
+            }
+
+        };
+        return r;
+    }
+
+    private boolean eventMatches(WeekViewEvent event, int year, int month) {
+        return (event.getStartTime().get(Calendar.YEAR) == year && event.getStartTime().get(Calendar.MONTH) == month - 1) || (event.getEndTime().get(Calendar.YEAR) == year && event.getEndTime().get(Calendar.MONTH) == month - 1);
+    }
+
+    public WeekView.EventClickListener theEventClickListener() {
+
+        WeekView.EventClickListener r = new WeekView.EventClickListener() {
+            @Override
+            public void onEventClick(WeekViewEvent event, RectF eventRect) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
+
+                alertDialogBuilder.setTitle(event.getName());
+                alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                Calendar st = event.getStartTime();
+                Calendar et = event.getEndTime();
+                SimpleDateFormat date = new SimpleDateFormat("MMMM dd, yyyy");
+                SimpleDateFormat time = new SimpleDateFormat("h:mm a");
+
+                String str = "Start Date: " + date.format(st.getTime()) + "\nStart Time: " + time.format(st.getTime()) + "\nEnd Date: " + date.format(et.getTime()) + "\nEnd Time: " + time.format(et.getTime());
+                alertDialogBuilder.setMessage(str);
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        };
+        return  r;
+    }
+
+    public WeekView.EventLongPressListener theEventLongPressListener() {
+
+        WeekView.EventLongPressListener r = new WeekView.EventLongPressListener() {
+            @Override
+            public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
+
+            }
+        };
+        return r;
     }
 
     /************************************
@@ -192,8 +270,8 @@ public class CalendarHandler {
 
         final int ID_INDEX = 0, TITLE_INDEX = 1, START_INDEX = 2, END_INDEX = 3;
 
-        String selection = "(" + CalendarContract.Events.CALENDAR_ID + " = ?)";
-        String[] selectionArgs = new String[] {"2"}; // 2 because it is the second calendar apart from the 1 which is local
+        String selection = "((" + CalendarContract.Events.CALENDAR_ID + " = ?) OR (" + CalendarContract.Events.CALENDAR_ID + " = ?))";
+        String[] selectionArgs = new String[] {"1", "2"};
 
         // Get a Cursor over the Events Provider.
         Cursor cursor = activity.getContentResolver().query(CalendarContract.Events.CONTENT_URI, EVENT_PROJECTION, selection, selectionArgs, null);
@@ -235,63 +313,6 @@ public class CalendarHandler {
         else {
             return true;
         }
-    }
-
-
-    /******************
-     *   Listeners    *
-     ******************/
-
-    public MonthLoader.MonthChangeListener theMonthChangeListener() {
-
-        MonthLoader.MonthChangeListener r = new MonthLoader.MonthChangeListener() {
-
-            @Override
-            public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
-
-                List<WeekViewEvent> allevents = new ArrayList<>(localevents);
-                allevents.addAll(googleevents);
-
-                // Return only the events that matches newYear and newMonth.
-                List<WeekViewEvent> matchedEvents = new ArrayList<WeekViewEvent>();
-
-                for (WeekViewEvent event : allevents) {
-                    if (eventMatches(event, newYear, newMonth)) {
-                        matchedEvents.add(event);
-                    }
-                }
-
-                return matchedEvents;
-            }
-
-        };
-        return r;
-    }
-
-    private boolean eventMatches(WeekViewEvent event, int year, int month) {
-        return (event.getStartTime().get(Calendar.YEAR) == year && event.getStartTime().get(Calendar.MONTH) == month - 1) || (event.getEndTime().get(Calendar.YEAR) == year && event.getEndTime().get(Calendar.MONTH) == month - 1);
-    }
-
-    public WeekView.EventClickListener theEventClickListener() {
-
-        WeekView.EventClickListener r = new WeekView.EventClickListener() {
-            @Override
-            public void onEventClick(WeekViewEvent event, RectF eventRect) {
-
-            }
-        };
-        return  r;
-    }
-
-    public WeekView.EventLongPressListener theEventLongPressListener() {
-
-        WeekView.EventLongPressListener r = new WeekView.EventLongPressListener() {
-            @Override
-            public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
-
-            }
-        };
-        return r;
     }
 
     /**
@@ -347,10 +368,13 @@ public class CalendarHandler {
         return result;
     }
 
+
     /*
-    public boolean theCalendars_parser() {
+    public String theCalendars_parser() {
 
         googleevents = new ArrayList<>();
+        String theCalendars;
+
 
         String[] projection = new String[]{
                 CalendarContract.Calendars._ID,
@@ -379,12 +403,7 @@ public class CalendarHandler {
             } while (calCursor.moveToNext());
         }
 
-        if (googleevents.size() == 0) {
-            return false;
-        }
-        else {
-            return true;
-        }
+        return theCalendars;
     }
     */
 

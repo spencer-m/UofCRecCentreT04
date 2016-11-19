@@ -50,7 +50,7 @@ public class mycalendar extends AppCompatActivity{
         // END CALENDAR
 
         TextView tvv =  (TextView) findViewById(R.id.testbox);
-        //tvv.setText(ch.whatIsGoogleData());
+        //tvv.setText(ch.theCalendars_parser());
     }
 
     @Override
