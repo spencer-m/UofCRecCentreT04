@@ -34,6 +34,8 @@ public class mycalendar extends AppCompatActivity{
 
         CalendarHandler ch = new CalendarHandler(this);
 
+        //ch.setWhatType(new String[] {"0", "1"});
+
         // Get a reference for the week view in the layout.
         weekView = (WeekView) findViewById(R.id.weekView);
 
@@ -42,7 +44,7 @@ public class mycalendar extends AppCompatActivity{
 
         // The week view has infinite scrolling horizontally. We have to provide the events of a
         // month every time the month changes on the week view.
-        weekView.setMonthChangeListener(ch.theMonthChangeListener());
+        weekView.setMonthChangeListener(ch.simpleMonthChangeListener());
 
         // Set long press listener for events.
         weekView.setEventLongPressListener(ch.theEventLongPressListener());
