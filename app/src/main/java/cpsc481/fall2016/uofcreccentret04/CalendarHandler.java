@@ -412,24 +412,18 @@ public class CalendarHandler {
 
         int result = 0;
 
-        if (s.equals("0")) {
+        if (s.equals("0"))
             result = activity.getResources().getColor(R.color.bookedsquash0);
-        }
-        else if (s.equals("1")) {
+        else if (s.equals("1"))
             result = activity.getResources().getColor(R.color.bookedraquet1);
-        }
-        else if (s.equals("2")) {
+        else if (s.equals("2"))
             result = activity.getResources().getColor(R.color.mybookedsquash2);
-        }
-        else if (s.equals("3")) {
+        else if (s.equals("3"))
             result = activity.getResources().getColor(R.color.mybookedraquet3);
-        }
-        else if (s.equals("4")) {
+        else if (s.equals("4"))
             result = activity.getResources().getColor(R.color.squash4);
-        }
-        else if (s.equals("5")) {
+        else if (s.equals("5"))
             result = activity.getResources().getColor(R.color.raquet5);
-        }
 
         return result;
     }
@@ -438,24 +432,18 @@ public class CalendarHandler {
 
         String result = "";
 
-        if (i == activity.getResources().getColor(R.color.bookedsquash0)) {
+        if (i == activity.getResources().getColor(R.color.bookedsquash0))
             result = "0";
-        }
-        else if (i == activity.getResources().getColor(R.color.bookedraquet1)) {
+        else if (i == activity.getResources().getColor(R.color.bookedraquet1))
             result = "1";
-        }
-        else if (i == activity.getResources().getColor(R.color.mybookedsquash2)) {
+        else if (i == activity.getResources().getColor(R.color.mybookedsquash2))
             result = "2";
-        }
-        else if (i == activity.getResources().getColor(R.color.mybookedraquet3)) {
+        else if (i == activity.getResources().getColor(R.color.mybookedraquet3))
             result = "3";
-        }
-        else if (i == activity.getResources().getColor(R.color.squash4)) {
+        else if (i == activity.getResources().getColor(R.color.squash4))
             result = "4";
-        }
-        else if (i == activity.getResources().getColor(R.color.raquet5)) {
+        else if (i == activity.getResources().getColor(R.color.raquet5))
             result = "5";
-        }
 
         return result;
     }
@@ -518,43 +506,27 @@ public class CalendarHandler {
         return result;
     }
 
-
     /*
     public String theCalendars_parser() {
-
         googleevents = new ArrayList<>();
         String theCalendars;
-
-
-        String[] projection = new String[]{
+        String[] projection = new String[] {
                 CalendarContract.Calendars._ID,
                 CalendarContract.Calendars.NAME,
                 CalendarContract.Calendars.ACCOUNT_NAME,
-                CalendarContract.Calendars.ACCOUNT_TYPE
-        };
-
-        Cursor calCursor = activity.getContentResolver().query(CalendarContract.Calendars.CONTENT_URI,
-                projection,
-                CalendarContract.Calendars.VISIBLE + " = 1",
-                null,
-                CalendarContract.Calendars._ID + " ASC");
-
-
+                CalendarContract.Calendars.ACCOUNT_TYPE };
+        Cursor calCursor = activity.getContentResolver().query(CalendarContract.Calendars.CONTENT_URI,projection,CalendarContract.Calendars.VISIBLE + " = 1",null,CalendarContract.Calendars._ID + " ASC");
         theCalendars = "";
         if (calCursor.moveToFirst()) {
             do {
-
                 String id = calCursor.getString(0);
                 String displayName = calCursor.getString(1);
                 String accName = calCursor.getString(2);
                 String accType = calCursor.getString(3);
                 theCalendars = theCalendars + "\nID: " + id + " DN: " + displayName + " ACCN: " + accName + " ACCT: " + accType;
-
             } while (calCursor.moveToNext());
         }
-
         return theCalendars;
     }
     */
-
 }
