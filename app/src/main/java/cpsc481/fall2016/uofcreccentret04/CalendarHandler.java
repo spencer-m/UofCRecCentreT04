@@ -27,6 +27,8 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+import static java.lang.Math.max;
+
 /**
  * Created by Spencer on 11/17/2016.
  */
@@ -38,6 +40,7 @@ public class CalendarHandler {
     private Activity activity;
 
     private String[] whatType;
+    private long maxID;
 
     /**
      * Constructor
@@ -50,6 +53,7 @@ public class CalendarHandler {
         readLocal(); // read local data and store
         readGCal(); // read google calendar data and store
         whatType = null;
+        maxID = 0;
     }
 
     /******************
@@ -265,7 +269,9 @@ public class CalendarHandler {
                     startTime.set(Integer.parseInt(buf[4]), Integer.parseInt(buf[2])-1, Integer.parseInt(buf[3]), Integer.parseInt(buf[5]), Integer.parseInt(buf[6]));
                     endTime.set(Integer.parseInt(buf[9]), Integer.parseInt(buf[7])-1, Integer.parseInt(buf[8]), Integer.parseInt(buf[10]), Integer.parseInt(buf[11]));
                     // create temporary WeekView object holder
-                    WeekViewEvent tp = new WeekViewEvent(Long.parseLong(buf[0]), buf[1], startTime, endTime);
+                    long id = Long.parseLong(buf[0]);
+                    maxID = max(maxID, id);
+                    WeekViewEvent tp = new WeekViewEvent(id, buf[1], startTime, endTime);
 
                     tp.setColor(stringToIntTyper(buf[12]));
 
