@@ -37,38 +37,24 @@ public class MenuDock {
 
                 menu_dock.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
 
-                if (position == 0) {
-                    Intent i = new Intent(view.getContext(),camps.class);
-                    activity.startActivityForResult(i, 0);
-                }
-                else if (position == 1) {
-                    Intent i = new Intent(view.getContext(),programs.class);
-                    activity.startActivityForResult(i, 0);
-                }
-                else if (position == 2) {
-                    Intent i = new Intent(view.getContext(),levelup.class);
-                    activity.startActivityForResult(i, 0);
-                }
-                else if (position == 3) {
-                    Intent i = new Intent(view.getContext(),activities.class);
-                    activity.startActivityForResult(i, 0);
-                }
-                else if (position == 4) {
-                    Intent i = new Intent(view.getContext(),activity_fitness_centre_t.class);
-                    activity.startActivityForResult(i, 0);
-                }
-                else if (position == 5) {
-                    Intent i = new Intent(view.getContext(),bookings.class);
-                    activity.startActivityForResult(i, 0);
-                }
-                else if (position == 6) {
-                    Intent i = new Intent(view.getContext(),mycalendar.class);
-                    activity.startActivityForResult(i, 0);
-                }
-                else if (position == 7) {
-                    Intent i = new Intent(view.getContext(),Home.class);
-                    activity.startActivityForResult(i, 0);
-                }
+                Intent i = null;
+                if (position == 0)
+                    i = new Intent(view.getContext(),camps.class);
+                else if (position == 1)
+                    i = new Intent(view.getContext(),programs.class);
+                else if (position == 2)
+                    i = new Intent(view.getContext(),levelup.class);
+                else if (position == 3)
+                    i = new Intent(view.getContext(),activities.class);
+                else if (position == 4)
+                     i = new Intent(view.getContext(),activity_fitness_centre_t.class);
+                else if (position == 5)
+                    i = new Intent(view.getContext(),bookings.class);
+                else if (position == 6)
+                    i = new Intent(view.getContext(),mycalendar.class);
+                else if (position == 7)
+                    i = new Intent(view.getContext(),Home.class);
+                activity.startActivityForResult(i, 0);
 
             }
         });
