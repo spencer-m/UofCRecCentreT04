@@ -79,6 +79,12 @@
     <string name="bookings">Bookings</string>
     <string name="mycalendar">My Calendar</string>
 
+    <string-array name="filter_options">
+        <item>Open</item>
+        <item>All</item>
+        <item>Mine</item>
+    </string-array>
+
     <string name="startscan">Start Scanning</string>
     <string name="stopscan">Stop Scanning</string>
     <string name="fc_overview_desc">Description of Fitness Centre</string>

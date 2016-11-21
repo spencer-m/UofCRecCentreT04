@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.alamkanak.weekview.WeekView;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
@@ -23,12 +24,7 @@ import java.util.List;
 
 public class bookings extends AppCompatActivity {
 
-    // tracks if current bookings is shown
-    boolean showbookings = false;
-    ExpandableListView currentbookingsListView;
-    ExpandableListAdapter currentbookingsListAdapter;
-    List<String> currentbookingsListTitle;
-    HashMap<String, List<String>> currentbookingsListDetail;
+    private WeekView wv;
 
     // Menu Dock Object
     MenuDock md;
@@ -47,92 +43,31 @@ public class bookings extends AppCompatActivity {
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E30C00")));
         bar.isHideOnContentScrollEnabled();
 
-        // Populate hour spinner
-        // create data for spinner
-        List<String> hour_arr_data = new ArrayList<String>();
-        for(int i = 1; i <= 12; i++){
-            hour_arr_data.add((Integer.toString(i)));
-        }
-        // enter data to spinner
-        Spinner hour_spinner = (Spinner)findViewById(R.id.hour_booking_dropdown);
-        ArrayAdapter<String> hour_spinner_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, hour_arr_data);
-        hour_spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        hour_spinner.setAdapter(hour_spinner_adapter);
+        // Create calendar
+        CalendarHandler ch = new CalendarHandler(this);
 
-        // Populate minute spinners
-        // create data for spinner
-        List<String> min_arr_data = new ArrayList<String>();
-        for(int i = 0; i <= 59; i++){
-            min_arr_data.add((Integer.toString(i)));
-        }
-        // enter data to spinner
-        Spinner min_spinner = (Spinner)findViewById(R.id.minute_booking_dropdown);
-        ArrayAdapter<String> leftmin_spinner_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, min_arr_data);
-        leftmin_spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        min_spinner.setAdapter(leftmin_spinner_adapter);
+        //ch.setWhatType(new String[] {"0", "1"});
 
-        // init current bookings
-        currentbookingsListView = (ExpandableListView) findViewById(R.id.currentbookings);
-        currentbookingsListDetail = CurrentBookingsListDataPump.getData();
-        currentbookingsListTitle = new ArrayList<String>(currentbookingsListDetail.keySet());
-        currentbookingsListAdapter = new CurrentBookingsListAdapter(this, currentbookingsListTitle, currentbookingsListDetail);
-        currentbookingsListView.setAdapter(currentbookingsListAdapter);
-        currentbookingsListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener(){
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(), currentbookingsListTitle.get(groupPosition) + "List Expanded.",
-                        Toast.LENGTH_SHORT).show();
+        // Get a reference for the week view in the layout.
+        wv = (WeekView) findViewById(R.id.weekView);
 
-            }
-        });
+        // Set an action when any event is clicked.
+        wv.setOnEventClickListener(ch.simpleEventClickListener());
 
-        currentbookingsListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener(){
-            @Override
-            public void onGroupCollapse(int groupPosition){
-                Toast.makeText(getApplicationContext(),
-                        currentbookingsListTitle.get(groupPosition) + "List collapsed.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        // The week view has infinite scrolling horizontally. We have to provide the events of a
+        // month every time the month changes on the week view.
+        wv.setMonthChangeListener(ch.simpleMonthChangeListener());
 
-        currentbookingsListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener(){
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        currentbookingsListTitle.get(groupPosition)
-                                + " -> "
-                                + currentbookingsListDetail.get(
-                                currentbookingsListTitle.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT
-                ).show();
-                return false;
-            }
-        });
+        // Set long press listener for events.
+        wv.setEventLongPressListener(ch.theEventLongPressListener());
+
+
+        // END CALENDAR
+
+
     }
 
-    // shows user's current booked rooms
-   /* public void toggleCurrentBookings(View view) {
 
-        ImageButton button = (ImageButton)findViewById(R.id.expandBookings);
-
-        if(showbookings == false){
-            // clear button image
-            button.setImageResource(android.R.color.transparent);
-            //change imagebutton image
-            button.setImageResource(R.drawable.collapse);
-
-            showbookings = true;
-
-        }else{
-            //change imagebutton image
-            button.setImageResource(android.R.color.transparent);
-            button.setImageResource(R.drawable.expand);
-
-            showbookings = false;
-        }
-    }*/
 
     // Handles Cancel button
     public void toHome(View view) {
