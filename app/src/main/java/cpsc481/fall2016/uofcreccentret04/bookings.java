@@ -81,6 +81,10 @@ public class bookings extends AppCompatActivity {
         // Set long press listener for events.
         wv.setEventLongPressListener(ch.theEventLongPressListener());
 
+        // Set hour
+        double hour = (double) c.get(Calendar.HOUR_OF_DAY);
+        wv.goToHour(hour);
+
 
         // END CALENDAR
 
@@ -125,6 +129,26 @@ public class bookings extends AppCompatActivity {
                         Calendar cobj = Calendar.getInstance();
 
                         cobj.set(year, monthOfYear, dayOfMonth);
+
+                        double hour = (double) cobj.get(Calendar.HOUR_OF_DAY);
+
+                        // make calendar jump to date
+                        wv.goToDate(cobj);
+                        wv.goToHour(hour);
+
+                        // set Current date at top
+                        String datestr = "";
+
+
+                        String day = cobj.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.CANADA);
+                        String month = cobj.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.CANADA);
+                        String day_of_month = String.valueOf(cobj.get(Calendar.DAY_OF_MONTH));
+
+                        datestr += day + ", " + month + ". " + day_of_month;
+
+                        TextView tv = (TextView) findViewById(R.id.date_bookings_string);
+                        tv.setText(datestr);
+
 
                     }}, myear, mmonth, mday);
 
