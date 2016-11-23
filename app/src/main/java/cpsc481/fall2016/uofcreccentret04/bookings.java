@@ -1,5 +1,6 @@
 package cpsc481.fall2016.uofcreccentret04;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
@@ -31,6 +33,7 @@ public class bookings extends AppCompatActivity {
 
     // Menu Dock Object
     MenuDock md;
+    Calendar c = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +46,15 @@ public class bookings extends AppCompatActivity {
 
         // set Current date at top
         String datestr = "";
-        Calendar c = Calendar.getInstance();
+
 
         String day = c.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.CANADA);
         String month = c.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.CANADA);
+        String day_of_month = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
 
-        datestr += day + ", " + month + ". " + Calendar.DAY_OF_MONTH;
+        datestr += day + ", " + month + ". " + day_of_month;
 
-        TextView tv = (TextView)findViewById(R.id.date_bookings_string);
+        TextView tv = (TextView) findViewById(R.id.date_bookings_string);
         tv.setText(datestr);
 
 
@@ -84,7 +88,6 @@ public class bookings extends AppCompatActivity {
     }
 
 
-
     // Handles Cancel button
     public void toHome(View view) {
         Intent toHome = new Intent(view.getContext(), Home.class);
@@ -109,6 +112,23 @@ public class bookings extends AppCompatActivity {
 
 
     public void openDatePicker(View view) {
-        showDialog(007);
+
+        int myear = c.get(Calendar.YEAR);
+        int mmonth = c.get(Calendar.MONTH);
+        int mday = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        // handle date set
+                        Calendar cobj = Calendar.getInstance();
+
+                        cobj.set(year, monthOfYear, dayOfMonth);
+
+                    }}, myear, mmonth, mday);
+
+        datePickerDialog.show();
+
     }
 }
