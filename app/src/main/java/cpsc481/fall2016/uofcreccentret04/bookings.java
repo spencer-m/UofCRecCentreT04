@@ -13,14 +13,17 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alamkanak.weekview.WeekView;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class bookings extends AppCompatActivity {
 
@@ -37,6 +40,19 @@ public class bookings extends AppCompatActivity {
 
         // Menu Dock Init
         md = new MenuDock(this);
+
+        // set Current date at top
+        String datestr = "";
+        Calendar c = Calendar.getInstance();
+
+        String day = c.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.CANADA);
+        String month = c.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.CANADA);
+
+        datestr += day + ", " + month + ". " + Calendar.DAY_OF_MONTH;
+
+        TextView tv = (TextView)findViewById(R.id.date_bookings_string);
+        tv.setText(datestr);
+
 
         // sets title background color
         ActionBar bar = getSupportActionBar();
@@ -92,4 +108,7 @@ public class bookings extends AppCompatActivity {
     }
 
 
+    public void openDatePicker(View view) {
+        showDialog(007);
+    }
 }

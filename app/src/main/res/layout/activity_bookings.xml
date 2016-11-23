@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.sothree.slidinguppanel.SlidingUpPanelLayout
-style="@style/PanelMain"
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:sothree="http://schemas.android.com/apk/res-auto"
-android:id="@+id/menu_dock"
-sothree:umanoFadeColor="@color/dockcolor"
-sothree:umanoPanelHeight="@dimen/dockheight"
-sothree:umanoShadowHeight="@dimen/dockshadow" >
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_dock"
+    style="@style/PanelMain"
+    sothree:umanoFadeColor="@color/dockcolor"
+    sothree:umanoPanelHeight="@dimen/dockheight"
+    sothree:umanoShadowHeight="@dimen/dockshadow">
 
-<!-- MAIN CONTENT -->
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <!-- MAIN CONTENT -->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/activity_bookings"
@@ -26,85 +24,117 @@ sothree:umanoShadowHeight="@dimen/dockshadow" >
             android:id="@+id/filter_booking_dropdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/filter_options"
             android:layout_alignBaseline="@+id/court_booking_dropdown"
             android:layout_alignBottom="@+id/court_booking_dropdown"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="15dp"/>
+            android:layout_marginEnd="15dp"
+            android:entries="@array/filter_options" />
 
         <Spinner
             android:id="@+id/court_booking_dropdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/courtlist"
-            android:spinnerMode="dropdown"
-            android:layout_marginTop="37dp"
-            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="15dp"/>
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="37dp"
+            android:entries="@array/courtlist"
+            android:spinnerMode="dropdown" />
 
         <TextView
             android:id="@+id/filter_booking_string"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Filter"
             android:layout_above="@id/filter_booking_dropdown"
             android:layout_alignStart="@id/filter_booking_dropdown"
-            android:textColor="@color/black"
             android:layout_marginStart="5dp"
-            />
+            android:text="Filter"
+            android:textColor="@color/black" />
 
-        <RelativeLayout
-            android:id="@+id/calendar_booking_holder"
-            android:layout_width="wrap_content"
-            android:layout_height="400dp"
-            android:paddingEnd="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="50dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/court_booking_dropdown"
-            android:layout_alignStart="@id/court_booking_dropdown">
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
 
-            <com.alamkanak.weekview.WeekView
-                android:id="@+id/weekView"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:eventTextColor="@android:color/white"
-                app:textSize="12sp"
-                app:hourHeight="60dp"
-                app:headerColumnPadding="8dp"
-                app:headerColumnTextColor="#8f000000"
-                app:headerRowPadding="12dp"
-                app:columnGap="8dp"
-                app:noOfVisibleDays="3"
-                app:headerRowBackgroundColor="#ffefefef"
-                app:dayBackgroundColor="#05000000"
-                app:todayBackgroundColor="#1848adff"
-                app:headerColumnBackground="#ffffffff"/>
+                android:layout_height="wrap_content" >
+                <TextView
+                    android:id="@+id/date_bookings_string"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date"
+                    android:gravity="center"
+                    android:onClick="openDatePicker"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:paddingEnd="10dp"/>
 
-        </RelativeLayout>
+                <ImageButton
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/calendar_icon"
+                    android:id="@+id/imageButton"
+                    android:layout_toEndOf="@id/date_bookings_string"
+                    />
+
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:id="@+id/calendar_booking_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="50dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="10dp"
+                android:layout_weight="1">
+
+                <com.alamkanak.weekview.WeekView
+                    android:id="@+id/weekView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:columnGap="8dp"
+                    app:dayBackgroundColor="#05000000"
+                    app:eventTextColor="@android:color/white"
+                    app:headerColumnBackground="#ffffffff"
+                    app:headerColumnPadding="8dp"
+                    app:headerColumnTextColor="#8f000000"
+                    app:headerRowBackgroundColor="#ffefefef"
+                    app:headerRowPadding="12dp"
+                    app:hourHeight="60dp"
+                    app:noOfVisibleDays="3"
+                    app:textSize="12sp"
+                    app:todayBackgroundColor="#1848adff" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </RelativeLayout>
 
-<!-- END MAIN CONTENT -->
+    <!-- END MAIN CONTENT -->
 
-<!-- PANEL LAYOUT -->
-<RelativeLayout
-    style="@style/PanelSlideMain">
+    <!-- PANEL LAYOUT -->
+    <RelativeLayout style="@style/PanelSlideMain">
 
-    <Button
-        style="@style/PanelButtonUp"
-        android:id="@+id/openMenuB" />
+        <Button
+            android:id="@+id/openMenuB"
+            style="@style/PanelButtonUp" />
 
-    <!-- MENU LIST -->
-    <ListView
-        style="@style/PanelButtonList"
-        android:id="@+id/menu_list" >
-    </ListView>
+        <!-- MENU LIST -->
+        <ListView
+            android:id="@+id/menu_list"
+            style="@style/PanelButtonList"></ListView>
 
-    <Button
-        style="@style/PanelButtonDown"
-        android:id="@+id/closeMenuB" />
+        <Button
+            android:id="@+id/closeMenuB"
+            style="@style/PanelButtonDown" />
 
-</RelativeLayout>
+    </RelativeLayout>
 
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
