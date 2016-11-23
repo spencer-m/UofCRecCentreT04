@@ -169,22 +169,61 @@ public class CalendarHandler {
             @Override
             public void onEventClick(WeekViewEvent event, RectF eventRect) {
 
+                int x = event.getColor();
+                String type = intToStringTyper(x);
+
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 
-                alertDialogBuilder.setTitle(event.getName());
-                alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-                Calendar st = event.getStartTime();
-                Calendar et = event.getEndTime();
-                SimpleDateFormat date = new SimpleDateFormat("MMMM dd, yyyy");
-                SimpleDateFormat time = new SimpleDateFormat("h:mm a");
+                // TODO: handle different event types
 
-                String str = "Start Date: " + date.format(st.getTime()) + "\nStart Time: " + time.format(st.getTime()) + "\nEnd Date: " + date.format(et.getTime()) + "\nEnd Time: " + time.format(et.getTime());
-                alertDialogBuilder.setMessage(str);
+                // Booked rooms
+                if(type.equals("0") || type.equals("1")){
+                    alertDialogBuilder.setTitle(event.getName());
+                    alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+                    Calendar st = event.getStartTime();
+                    Calendar et = event.getEndTime();
+                    SimpleDateFormat date = new SimpleDateFormat("MMMM dd, yyyy");
+                    SimpleDateFormat time = new SimpleDateFormat("h:mm a");
+
+                    String str = "Start Date: " + date.format(st.getTime()) + "\nStart Time: " + time.format(st.getTime()) + "\nEnd Date: " + date.format(et.getTime()) + "\nEnd Time: " + time.format(et.getTime());
+                    alertDialogBuilder.setMessage(str);
+                }
+
+                // My rooms
+                else if(type.equals("2") || type.equals("3")){
+                    alertDialogBuilder.setTitle(event.getName());
+                    alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+                    alertDialogBuilder.setNegativeButton("Cancel Booking", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                                 
+                        }
+                    });
+                    Calendar st = event.getStartTime();
+                    Calendar et = event.getEndTime();
+                    SimpleDateFormat date = new SimpleDateFormat("MMMM dd, yyyy");
+                    SimpleDateFormat time = new SimpleDateFormat("h:mm a");
+
+                    String str = "Start Date: " + date.format(st.getTime()) + "\nStart Time: " + time.format(st.getTime()) + "\nEnd Date: " + date.format(et.getTime()) + "\nEnd Time: " + time.format(et.getTime());
+                    alertDialogBuilder.setMessage(str);
+                }
+
+                // Available rooms
+                else{
+
+                }
+
+
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
