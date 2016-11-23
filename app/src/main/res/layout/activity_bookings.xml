@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical"
-        tools:context="cpsc481.fall2016.uofcreccentret04.bookings">
+        tools:context="cpsc481.fall2016.uofcreccentret04.Bookings">
 
 
         <Spinner

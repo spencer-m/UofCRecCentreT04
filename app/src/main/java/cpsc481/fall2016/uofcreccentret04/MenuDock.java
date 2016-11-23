@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
@@ -49,7 +48,7 @@ public class MenuDock {
                 else if (position == 4)
                      i = new Intent(view.getContext(),activity_fitness_centre_t.class);
                 else if (position == 5)
-                    i = new Intent(view.getContext(),bookings.class);
+                    i = new Intent(view.getContext(),Bookings.class);
                 else if (position == 6)
                     i = new Intent(view.getContext(),mycalendar.class);
                 else if (position == 7)
