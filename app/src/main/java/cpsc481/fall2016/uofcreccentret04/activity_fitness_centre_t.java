@@ -49,15 +49,6 @@ public class activity_fitness_centre_t extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fitness_centre_t);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.customaction_bar);
-        TextView tv = (TextView) findViewById(R.id.headerText);
-        tv.setText(R.string.fitness_centre);
-
-        // sets title background color
-        //ActionBar bar = getSupportActionBar();
-        //bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E30C00")));
-        //bar.isHideOnContentScrollEnabled();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
