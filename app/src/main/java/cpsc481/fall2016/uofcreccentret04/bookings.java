@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-public class bookings extends AppCompatActivity {
+public class Bookings extends AppCompatActivity {
 
     private WeekView wv;
 
@@ -66,17 +66,15 @@ public class bookings extends AppCompatActivity {
         // Create calendar
         CalendarHandler ch = new CalendarHandler(this);
 
-        //ch.setWhatType(new String[] {"0", "1"});
-
         // Get a reference for the week view in the layout.
         wv = (WeekView) findViewById(R.id.weekView);
 
         // Set an action when any event is clicked.
-        wv.setOnEventClickListener(ch.simpleEventClickListener());
+        wv.setOnEventClickListener(ch.complexEventClickListener());
 
         // The week view has infinite scrolling horizontally. We have to provide the events of a
         // month every time the month changes on the week view.
-        wv.setMonthChangeListener(ch.simpleMonthChangeListener());
+        wv.setMonthChangeListener(ch.adaptiveMonthChangeListener());
 
         // Set long press listener for events.
         wv.setEventLongPressListener(ch.theEventLongPressListener());
@@ -84,7 +82,6 @@ public class bookings extends AppCompatActivity {
         // Set hour
         double hour = (double) c.get(Calendar.HOUR_OF_DAY);
         wv.goToHour(hour);
-
 
         // END CALENDAR
 

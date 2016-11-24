@@ -35,6 +35,13 @@ import static java.lang.Math.max;
 
 public class CalendarHandler {
 
+    private final String BOOKED_SQUASH = "Booked Squash Court";
+    private final String BOOKED_RACQUET = "Booked Racquet Court";
+    private final String MY_SQUASH = "CPSC 481-T04's Squash Court";
+    private final String MY_RACQUET = "CPSC 481-T04's Racquet Court";
+    private final String AVAIL_SQUASH = "Available Squash Court";
+    private final String AVAIL_RACQUET = "Available Racquet Court";
+
     private List<WeekViewEvent> localevents;
     private List<WeekViewEvent> googleevents;
     private Activity activity;
@@ -167,35 +174,17 @@ public class CalendarHandler {
 
         WeekView.EventClickListener r = new WeekView.EventClickListener() {
             @Override
-            public void onEventClick(WeekViewEvent event, RectF eventRect) {
+            public void onEventClick(final WeekViewEvent event, RectF eventRect) {
 
                 int x = event.getColor();
                 String type = intToStringTyper(x);
 
+                // check if time is after current time
+
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 
-                // TODO: handle different event types
-
-                // Booked rooms
-                if(type.equals("0") || type.equals("1")){
-                    alertDialogBuilder.setTitle(event.getName());
-                    alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.cancel();
-                        }
-                    });
-                    Calendar st = event.getStartTime();
-                    Calendar et = event.getEndTime();
-                    SimpleDateFormat date = new SimpleDateFormat("MMMM dd, yyyy");
-                    SimpleDateFormat time = new SimpleDateFormat("h:mm a");
-
-                    String str = "Start Date: " + date.format(st.getTime()) + "\nStart Time: " + time.format(st.getTime()) + "\nEnd Date: " + date.format(et.getTime()) + "\nEnd Time: " + time.format(et.getTime());
-                    alertDialogBuilder.setMessage(str);
-                }
-
                 // My rooms
-                else if(type.equals("2") || type.equals("3")){
+                if ((type.equals("2") || type.equals("3")) && Calendar.getInstance().before(event.getStartTime())){
                     alertDialogBuilder.setTitle(event.getName());
                     alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
                         @Override
@@ -207,23 +196,63 @@ public class CalendarHandler {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
+                            new AlertDialog.Builder(activity)
+                                    .setTitle("Confirm to Cancel a Booking")
+                                    .setMessage("Do you really want to cancel your room booking?")
+                                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int whichButton) {
+                                            localCancel(event); // cancel an event
+                                        }})
+                                    .setNegativeButton(android.R.string.no, null).show();
                         }
                     });
-                    Calendar st = event.getStartTime();
-                    Calendar et = event.getEndTime();
-                    SimpleDateFormat date = new SimpleDateFormat("MMMM dd, yyyy");
-                    SimpleDateFormat time = new SimpleDateFormat("h:mm a");
-
-                    String str = "Start Date: " + date.format(st.getTime()) + "\nStart Time: " + time.format(st.getTime()) + "\nEnd Date: " + date.format(et.getTime()) + "\nEnd Time: " + time.format(et.getTime());
-                    alertDialogBuilder.setMessage(str);
                 }
 
                 // Available rooms
-                else{
+                else if ((type.equals("4") || type.equals("5")) && Calendar.getInstance().before(event.getStartTime())) {
+
+                    alertDialogBuilder.setTitle(event.getName());
+                    alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+                    alertDialogBuilder.setNegativeButton("Book Room", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            new AlertDialog.Builder(activity)
+                                    .setTitle("Confirm to Book a Room")
+                                    .setMessage("Do you really want to book this room?")
+                                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int whichButton) {
+                                            localBook(event); // book an event
+                                        }})
+                                    .setNegativeButton(android.R.string.no, null).show();
+                        }
+                    });
 
                 }
 
+                // Booked rooms, Google events and finished events
+                else {
+                    alertDialogBuilder.setTitle(event.getName());
+                    alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+                }
 
+                Calendar st = event.getStartTime();
+                Calendar et = event.getEndTime();
+                SimpleDateFormat date = new SimpleDateFormat("MMMM dd, yyyy");
+                SimpleDateFormat time = new SimpleDateFormat("h:mm a");
+
+                String str = "Start Date: " + date.format(st.getTime()) + "\nStart Time: " + time.format(st.getTime()) + "\nEnd Date: " + date.format(et.getTime()) + "\nEnd Time: " + time.format(et.getTime());
+                alertDialogBuilder.setMessage(str);
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
@@ -319,9 +348,11 @@ public class CalendarHandler {
                 }
 
                 in.close();
+                //Toast.makeText(activity, "Read Success!", Toast.LENGTH_LONG).show();
             }
         }
         catch(Exception e) {
+            //Toast.makeText(activity, "Read Failure!!", Toast.LENGTH_LONG).show();
             return false;
         }
         return true;
@@ -348,30 +379,58 @@ public class CalendarHandler {
                 String type = intToStringTyper(e.getColor());
 
                 // formatting output
-                str = Long.toString(e.getId()) + "\t" + e.getName() + "\t" + sstr + "\t" + estr + type + "\n";
+                str = Long.toString(e.getId()) + "\t" + e.getName() + "\t" + sstr + "\t" + estr + "\t" + type + "\n";
                 // write output
                 out.write(str);
             }
             out.close();
+            //Toast.makeText(activity, "Write Success!", Toast.LENGTH_LONG).show();
 
         }
         catch(Exception e) {
+            //Toast.makeText(activity, "Write Failure", Toast.LENGTH_LONG).show();
             return false;
         }
         return true;
     }
 
-    public void addToLocal() {
-        // to be discussed
+    public void localCancel(WeekViewEvent event) {
 
+        int i = localevents.indexOf(event);
+        String type = intToStringTyper(localevents.get(i).getColor());
+
+        if (type.equals("2")) {
+            localevents.get(i).setColor(stringToIntTyper("4"));
+            localevents.get(i).setName(AVAIL_SQUASH);
+        }
+        else if (type.equals("3")) {
+            localevents.get(i).setColor(stringToIntTyper("5"));
+            localevents.get(i).setName(AVAIL_RACQUET);
+        }
+
+        WeekView wv = (WeekView) activity.findViewById(R.id.weekView);
+        wv.notifyDatasetChanged();
         writeLocal();
-    }
-
-    public void editLocal() {
 
     }
 
-    public void deleteLocal() {
+    public void localBook(WeekViewEvent event) {
+
+        int i = localevents.indexOf(event);
+        String type = intToStringTyper(localevents.get(i).getColor());
+
+        if (type.equals("4")) {
+            localevents.get(i).setColor(stringToIntTyper("2"));
+            localevents.get(i).setName(MY_SQUASH);
+        }
+        else if (type.equals("5")) {
+            localevents.get(i).setColor(stringToIntTyper("3"));
+            localevents.get(i).setName(MY_RACQUET);
+        }
+
+        WeekView wv = (WeekView) activity.findViewById(R.id.weekView);
+        wv.notifyDatasetChanged();
+        writeLocal();
 
     }
 
@@ -439,7 +498,7 @@ public class CalendarHandler {
     }
 
     public void deleteGCal() {
-
+        // pass the intent to GCal
     }
 
     /**********************
