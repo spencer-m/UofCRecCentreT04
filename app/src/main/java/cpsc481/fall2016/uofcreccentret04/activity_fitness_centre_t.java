@@ -1,8 +1,11 @@
 package cpsc481.fall2016.uofcreccentret04;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -46,6 +49,15 @@ public class activity_fitness_centre_t extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fitness_centre_t);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.customaction_bar);
+        TextView tv = (TextView) findViewById(R.id.headerText);
+        tv.setText(R.string.fitness_centre);
+
+        // sets title background color
+        //ActionBar bar = getSupportActionBar();
+        //bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E30C00")));
+        //bar.isHideOnContentScrollEnabled();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
