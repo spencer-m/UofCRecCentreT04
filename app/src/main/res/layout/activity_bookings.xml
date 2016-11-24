@@ -28,8 +28,8 @@
             android:layout_alignBottom="@+id/court_booking_dropdown"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="15dp"
-            android:entries="@array/filter_options" />
-
+            android:entries="@array/filter_options"
+            />
         <Spinner
             android:id="@+id/court_booking_dropdown"
             android:layout_width="wrap_content"

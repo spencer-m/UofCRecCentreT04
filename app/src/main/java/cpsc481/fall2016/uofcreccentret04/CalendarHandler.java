@@ -206,7 +206,7 @@ public class CalendarHandler {
                     alertDialogBuilder.setNegativeButton("Cancel Booking", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                                 
+
                         }
                     });
                     Calendar st = event.getStartTime();
