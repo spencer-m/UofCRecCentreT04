@@ -17,7 +17,7 @@ sothree:umanoShadowHeight="@dimen/dockshadow" >
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="cpsc481.fall2016.uofcreccentret04.acivity_fitness_centre_t">
+        tools:context="cpsc481.fall2016.uofcreccentret04.activity_fitness_centre_t">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"

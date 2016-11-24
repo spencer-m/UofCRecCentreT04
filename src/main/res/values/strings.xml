@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Recreation Centre App T04</string>
+    <string name="fc_overview_desc">Description of Fitness Centre</string>
+    <string name="fc_overview_hours_head">Hours:</string>
+    <string name="fc_hours_mon">Monday</string>
+</resources>
