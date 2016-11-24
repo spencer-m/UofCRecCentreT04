@@ -3,8 +3,15 @@
 
     <!-- List of bookable courts -->
     <string-array name="courtlist">
+        <item>All</item>
         <item>Racquet</item>
         <item>Squash</item>
+    </string-array>
+
+    <string-array name="filter_options">
+        <item>Open</item>
+        <item>Mine</item>
+        <item>All</item>
     </string-array>
 
     <!-- Months -->
@@ -78,6 +85,7 @@
     <string name="fitness_centre">Fitness Centre</string>
     <string name="bookings">Bookings</string>
     <string name="mycalendar">My Calendar</string>
+
 
     <string name="startscan">Start Scanning</string>
     <string name="stopscan">Stop Scanning</string>

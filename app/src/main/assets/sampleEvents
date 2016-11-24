@@ -1,6 +1,18 @@
-1	Booked Squash Court	11	5	2016	19	00	11	5	2016	20	00	0
-2	Booked Raquet Court	11	9	2016	19	00	11	9	2016	20	00	1
-3	Mine Squash Court	11	11	2016	18	00	11	11	2016	18	30	2
-4	Mine Racket Court	11	12	2016	18	00	11	12	2016	19	30	3
-4	Avail Squash Court	11	13	2016	18	00	11	13	2016	19	30	4
-4	Avail Raquet Court	11	14	2016	18	00	11	14	2016	19	30	5
+1	Booked Squash Court	11	29	2016	17	00	11	29	2016	18	00	0
+2	Booked Racquet Court	11	29	2016	17	00	11	29	2016	18	00	1
+3	Booked Squash Court	12	1	2016	15	00	12	1	2016	16	00	0
+4	Booked Racquet Court	12	1	2016	17	00	12	1	2016	18	00	1
+5	CPSC 481-T04's Squash Court	11	30	2016	9	00	11	30	2016	10	00	2
+6	CPSC 481-T04's Racquet Court	11	30	2016	11	00	11	30	2016	12	00	3
+7	Available Squash Court	11	30	2016	17	00	11	30	2016	18	00	4
+8	Available Raquet Court	11	30	2016	18	00	11	30	2016	19	00	5
+9	Available Raquet Court	11	23	2016	18	00	11	23	2016	19	00	5
+10	Booked Squash Court	12	7	2016	17	00	11	29	2016	18	00	0
+11	Booked Racquet Court	12	7	2016	17	00	11	29	2016	18	00	1
+12	Booked Squash Court	12	8	2016	15	00	12	1	2016	16	00	0
+13	Booked Racquet Court	12	8	2016	17	00	12	1	2016	18	00	1
+14	CPSC 481-T04's Squash Court	12	7	2016	9	00	11	30	2016	10	00	2
+15	CPSC 481-T04's Racquet Court	12	7	2016	11	00	11	30	2016	12	00	3
+16	Available Squash Court	12	8	2016	17	00	11	30	2016	18	00	4
+17	Available Raquet Court	12	8	2016	18	00	11	30	2016	19	00	5
+18	Available Raquet Court	12	3	2016	18	00	11	23	2016	19	00	5

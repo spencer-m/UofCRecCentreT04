@@ -1,5 +1,7 @@
 package cpsc481.fall2016.uofcreccentret04;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +29,11 @@ public class mycalendar extends AppCompatActivity{
         TextView tv = (TextView) findViewById(R.id.headerText);
         tv.setText(R.string.mycalendar);
 
+        // sets title background color
+        ActionBar bar = getSupportActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E30C00")));
+        bar.isHideOnContentScrollEnabled();
+
         // Menu Dock Init
         md = new MenuDock(this);
 
@@ -34,25 +41,26 @@ public class mycalendar extends AppCompatActivity{
 
         CalendarHandler ch = new CalendarHandler(this);
 
-        //ch.setWhatType(new String[] {"0", "1"});
+        // only my bookings will be shown
+        //ch.setWhatType(new String[] {"2", "3"});
 
         // Get a reference for the week view in the layout.
         weekView = (WeekView) findViewById(R.id.weekView);
 
         // Set an action when any event is clicked.
-        weekView.setOnEventClickListener(ch.simpleEventClickListener());
+        weekView.setOnEventClickListener(ch.complexEventClickListener());
 
         // The week view has infinite scrolling horizontally. We have to provide the events of a
         // month every time the month changes on the week view.
-        weekView.setMonthChangeListener(ch.simpleMonthChangeListener());
+        weekView.setMonthChangeListener(ch.adaptiveMonthChangeListener());
 
         // Set long press listener for events.
         weekView.setEventLongPressListener(ch.theEventLongPressListener());
 
-        // END CALENDAR
+        // Set hour
+        weekView.goToHour(8.0);
 
-        TextView tvv =  (TextView) findViewById(R.id.testbox);
-        //tvv.setText(ch.theCalendars_parser());
+        // END CALENDAR
     }
 
     @Override

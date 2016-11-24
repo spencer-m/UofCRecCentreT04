@@ -40,6 +40,17 @@
             android:layout_below="@id/uclogohome"
             android:paddingTop="25dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="News: \n\nNovember Track Closures\nDecember Track Closures\nDecember Public Skating TImes"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_below="@+id/ucnamehome"
+            android:layout_alignStart="@+id/ucnamehome"
+            android:layout_marginTop="42dp" />
+
     </RelativeLayout>
     <!-- END MAIN CONTENT -->
 
