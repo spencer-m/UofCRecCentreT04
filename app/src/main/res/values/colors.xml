@@ -7,11 +7,11 @@
     <color name="white">#FFFFFF</color>
     <color name="red">#E30C00</color>
     <color name="dockcolor">#E6F44B42</color>
-    <color name="bookedsquash0">#BAA912</color>
-    <color name="bookedraquet1">#1E3888</color>
+    <color name="bookedsquash0">#d1c9ba</color>
+    <color name="bookedraquet1">#babed1</color>
     <color name="mybookedsquash2">#F2DB13</color>
     <color name="mybookedraquet3">#4764BC</color>
-    <color name="squash4">#FFF070</color>
-    <color name="raquet5">#688EFF</color>
+    <color name="squash4">#fff18e</color>
+    <color name="raquet5">#8ea5ff</color>
     <color name="google">#ff4242</color>
 </resources>

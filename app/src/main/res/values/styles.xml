@@ -17,13 +17,13 @@
     <style name="PanelSlideMain">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">0.50</item>
+        <item name="android:layout_weight">0.65</item>
         <item name="android:background">@color/red</item>
     </style>
     <style name="PanelButtonUp">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">42dp</item>
-        <item name="android:text">^^^</item>
+        <item name="android:text">MENU</item>
     </style>
     <style name="PanelButtonList">
         <item name="android:layout_width">match_parent</item>
@@ -34,7 +34,7 @@
     <style name="PanelButtonDown">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">42dp</item>
-        <item name="android:text">vvv</item>
+        <item name="android:text">MENU</item>
         <item name="android:layout_below">@id/menu_list</item>
     </style>
 

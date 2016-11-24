@@ -72,12 +72,12 @@ public class MenuDock {
         Integer[] menuImgs={
                 R.drawable.menu1,
                 R.drawable.menu1,
-                R.drawable.menu1,
-                R.drawable.menu1,
-                R.drawable.menu1,
-                R.drawable.menu1,
-                R.drawable.menu1,
-                R.drawable.menu1
+                R.drawable.levelupicon,
+                R.drawable.activitiesicon,
+                R.drawable.fitnesscentreicon,
+                R.drawable.bookingsicon,
+                R.drawable.mycalendaricon,
+                R.drawable.homeicon
         };
 
         menu_list_adapter menuAdapter = new menu_list_adapter(activity, menuOptions, menuImgs);
