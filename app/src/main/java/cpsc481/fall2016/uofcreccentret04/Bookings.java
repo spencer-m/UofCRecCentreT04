@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ExpandableListAdapter;
@@ -34,6 +35,7 @@ public class Bookings extends AppCompatActivity {
     // Menu Dock Object
     MenuDock md;
     Calendar c = Calendar.getInstance();
+    CalendarHandler ch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,7 @@ public class Bookings extends AppCompatActivity {
         bar.isHideOnContentScrollEnabled();
 
         // Create calendar
-        CalendarHandler ch = new CalendarHandler(this);
+        ch = new CalendarHandler(this);
 
         // Get a reference for the week view in the layout.
         wv = (WeekView) findViewById(R.id.weekView);
@@ -85,6 +87,117 @@ public class Bookings extends AppCompatActivity {
 
         // END CALENDAR
 
+        // handle Filter spinner
+        Spinner filter_spinner = (Spinner) findViewById(R.id.filter_booking_dropdown);
+        // set default value
+        filter_spinner.setSelection(2);
+        filter_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Spinner court_spinner = (Spinner) findViewById(R.id.court_booking_dropdown);
+                int court_type = court_spinner.getSelectedItemPosition();
+
+                // show All courts (mine, open racquet, open squash)
+                if(court_type == 0 && position == 2){
+                    ch.setWhatType(null);
+                }
+
+                // show all open courts
+                if(court_type == 0 && position == 0){
+                    ch.setWhatType(new String[] {"4", "5"});
+                }
+
+                // show open racquet courts
+                else if(court_type == 1 && position == 0){
+                    ch.setWhatType(new String[] {"5"});
+                }
+
+                // show open squash courts
+                else if(court_type == 2 && position == 0){
+                    ch.setWhatType(new String[] {"4"});
+                }
+
+                // show all my courts
+                else if(court_type == 0 && position == 1){
+                    ch.setWhatType(new String[] {"2", "3"});
+                }
+
+                // show my racquet courts
+                else if(court_type == 1 && position == 1){
+                    ch.setWhatType(new String[] {"3"});
+                }
+
+                // show my squash courts
+                else if(court_type == 2 && position == 1){
+                    ch.setWhatType(new String[] {"2"});
+                }
+
+                // refresh calendar
+                wv.notifyDatasetChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        // handle Court filter
+        Spinner court_spinner = (Spinner) findViewById(R.id.court_booking_dropdown);
+        // set default value
+        court_spinner.setSelection(0);
+        court_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Spinner filter_spinner = (Spinner) findViewById(R.id.filter_booking_dropdown);
+                int filter_type = filter_spinner.getSelectedItemPosition();
+
+                // show All courts (mine, open racquet, open squash)
+                if(position == 0 && filter_type == 2){
+                    ch.setWhatType(null);
+                }
+
+                // show all open courts
+                if(position == 0 && filter_type == 0){
+                    ch.setWhatType(new String[] {"4", "5"});
+                }
+
+                // show open racquet courts
+                else if(position == 1 && filter_type == 0){
+                    ch.setWhatType(new String[] {"5"});
+                }
+
+                // show open squash courts
+                else if(position == 2 && filter_type == 0){
+                    ch.setWhatType(new String[] {"4"});
+                }
+
+                // show all my courts
+                else if(position == 0 && filter_type == 1){
+                    ch.setWhatType(new String[] {"2", "3"});
+                }
+
+                // show my racquet courts
+                else if(position == 1 && filter_type == 1){
+                    ch.setWhatType(new String[] {"3"});
+                }
+
+                // show my squash courts
+                else if(position == 2 && filter_type == 1){
+                    ch.setWhatType(new String[] {"2"});
+                }
+
+                // refresh calendar
+                wv.notifyDatasetChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -152,4 +265,5 @@ public class Bookings extends AppCompatActivity {
         datePickerDialog.show();
 
     }
+
 }
