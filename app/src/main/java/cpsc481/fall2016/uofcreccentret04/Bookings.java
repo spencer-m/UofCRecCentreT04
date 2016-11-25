@@ -122,7 +122,6 @@ public class Bookings extends AppCompatActivity {
 
     }
 
-
     public void filter() {
 
         // court type spinner

@@ -10,8 +10,6 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 public class Home extends AppCompatActivity {
 
-    // TODO: Stylize Menu Dock
-
     // Menu Dock Object
     MenuDock md;
 
