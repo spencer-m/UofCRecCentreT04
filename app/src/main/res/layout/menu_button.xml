@@ -2,6 +2,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal" >
+
+    <!-- CUSTOM LIST ITEMS -->
     <ImageView
         android:id="@+id/menu_image"
         android:layout_width="32dp"

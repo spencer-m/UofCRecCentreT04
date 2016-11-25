@@ -19,21 +19,28 @@
         <item name="android:layout_weight">0.6</item>
         <item name="android:background">@color/red</item>
     </style>
-    <style name="PanelButtonUp">
+    <style name="PanelButtonUp" parent="Widget.AppCompat.Button.Colored">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dockheight</item>
-        <item name="android:text">MENU UP</item>
+        <item name="android:text">OPEN MENU</item>
+        <item name="android:textSize">21dp</item>
+        <item name="android:drawableLeft">@drawable/ic_vertical_align_top_white_24dp</item>
+        <item name="android:drawableRight">@drawable/ic_vertical_align_top_white_24dp</item>
+
     </style>
     <style name="PanelButtonList">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_below">@id/openMenuB</item>
     </style>
-    <style name="PanelButtonDown">
+    <style name="PanelButtonDown" parent="Widget.AppCompat.Button.Colored">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dockheight</item>
-        <item name="android:text">MENU DOWN</item>
+        <item name="android:text">CLOSE MENU</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:layout_below">@id/menu_list</item>
+        <item name="android:drawableLeft">@drawable/ic_vertical_align_bottom_white_24dp</item>
+        <item name="android:drawableRight">@drawable/ic_vertical_align_bottom_white_24dp</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

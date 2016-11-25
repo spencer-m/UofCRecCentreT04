@@ -87,53 +87,14 @@ public class Bookings extends AppCompatActivity {
         // END CALENDAR
 
         // handle Filter spinner
-        Spinner filter_spinner = (Spinner) findViewById(R.id.filter_booking_dropdown);
+        final Spinner filter_spinner = (Spinner) findViewById(R.id.filter_booking_dropdown);
         // set default value
         filter_spinner.setSelection(2);
         filter_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                Spinner court_spinner = (Spinner) findViewById(R.id.court_booking_dropdown);
-                int court_type = court_spinner.getSelectedItemPosition();
-
-                // show All courts (mine, open racquet, open squash)
-                if(court_type == 0 && position == 2){
-                    ch.setWhatType(null);
-                }
-
-                // show all open courts
-                if(court_type == 0 && position == 0){
-                    ch.setWhatType(new String[] {"4", "5"});
-                }
-
-                // show open racquet courts
-                else if(court_type == 1 && position == 0){
-                    ch.setWhatType(new String[] {"5"});
-                }
-
-                // show open squash courts
-                else if(court_type == 2 && position == 0){
-                    ch.setWhatType(new String[] {"4"});
-                }
-
-                // show all my courts
-                else if(court_type == 0 && position == 1){
-                    ch.setWhatType(new String[] {"2", "3"});
-                }
-
-                // show my racquet courts
-                else if(court_type == 1 && position == 1){
-                    ch.setWhatType(new String[] {"3"});
-                }
-
-                // show my squash courts
-                else if(court_type == 2 && position == 1){
-                    ch.setWhatType(new String[] {"2"});
-                }
-
-                // refresh calendar
-                wv.notifyDatasetChanged();
+                filter();
             }
 
             @Override
@@ -150,46 +111,7 @@ public class Bookings extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                Spinner filter_spinner = (Spinner) findViewById(R.id.filter_booking_dropdown);
-                int filter_type = filter_spinner.getSelectedItemPosition();
-
-                // show All courts (mine, open racquet, open squash)
-                if(position == 0 && filter_type == 2){
-                    ch.setWhatType(null);
-                }
-
-                // show all open courts
-                if(position == 0 && filter_type == 0){
-                    ch.setWhatType(new String[] {"4", "5"});
-                }
-
-                // show open racquet courts
-                else if(position == 1 && filter_type == 0){
-                    ch.setWhatType(new String[] {"5"});
-                }
-
-                // show open squash courts
-                else if(position == 2 && filter_type == 0){
-                    ch.setWhatType(new String[] {"4"});
-                }
-
-                // show all my courts
-                else if(position == 0 && filter_type == 1){
-                    ch.setWhatType(new String[] {"2", "3"});
-                }
-
-                // show my racquet courts
-                else if(position == 1 && filter_type == 1){
-                    ch.setWhatType(new String[] {"3"});
-                }
-
-                // show my squash courts
-                else if(position == 2 && filter_type == 1){
-                    ch.setWhatType(new String[] {"2"});
-                }
-
-                // refresh calendar
-                wv.notifyDatasetChanged();
+                filter();
             }
 
             @Override
@@ -201,16 +123,62 @@ public class Bookings extends AppCompatActivity {
     }
 
 
-    // Handles Cancel button
-    public void toHome(View view) {
-        Intent toHome = new Intent(view.getContext(), Home.class);
-        startActivityForResult(toHome, 0);
-        finish();
-    }
+    public void filter() {
 
-    // Handles Search button
-    public void toSearch(View view) {
-        // open search activity
+        // court type spinner
+        Spinner court_spinner = (Spinner) findViewById(R.id.court_booking_dropdown);
+        int court_type = court_spinner.getSelectedItemPosition();
+        // filter type spinner
+        Spinner filter_spinner = (Spinner) findViewById(R.id.filter_booking_dropdown);
+        int filter_type = filter_spinner.getSelectedItemPosition();
+
+        // show all open courts
+        if(court_type == 0 && filter_type == 0){
+            ch.setWhatType(new String[] {"4", "5"});
+        }
+
+        // show all my courts
+        else if(court_type == 0 && filter_type == 1){
+            ch.setWhatType(new String[] {"2", "3"});
+        }
+
+        // show all courts
+        else if(court_type == 0 && filter_type == 2){
+            ch.setWhatType(null);
+        }
+
+        // show all open racquet courts
+        else if(court_type == 1 && filter_type == 0){
+            ch.setWhatType(new String[] {"5"});
+        }
+
+        // show my racquet courts
+        else if(court_type == 1 && filter_type == 1){
+            ch.setWhatType(new String[] {"3"});
+        }
+
+        // show all racquet courts
+        else if(court_type == 1 && filter_type == 2){
+            ch.setWhatType(new String[] {"1","3","5"});
+        }
+
+        // show all open squash courts
+        else if(court_type == 2 && filter_type == 0){
+            ch.setWhatType(new String[] {"4"});
+        }
+
+        // show my squash courts
+        else if(court_type == 2 && filter_type == 1){
+            ch.setWhatType(new String[] {"2"});
+        }
+
+        // show all squash courts
+        else if(court_type == 2 && filter_type == 2){
+            ch.setWhatType(new String[] {"0","2","4"});
+        }
+
+        // refresh calendar state
+        wv.notifyDatasetChanged();
     }
 
     @Override
