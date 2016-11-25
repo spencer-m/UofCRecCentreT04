@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#E30C00</color>
+    <color name="colorPrimaryDark">#a00800</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="red">#E30C00</color>
     <color name="dockcolor">#E6F44B42</color>
-    <color name="bookedsquash0">#d1c9ba</color>
+    <color name="bookedsquash0">#dec597</color>
     <color name="bookedraquet1">#babed1</color>
     <color name="mybookedsquash2">#F2DB13</color>
     <color name="mybookedraquet3">#4764BC</color>

@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Surface;
@@ -41,14 +42,11 @@ public class levelup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levelup);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.customaction_bar);
-        TextView tv = (TextView) findViewById(R.id.headerText);
-        tv.setText(R.string.levelup);
-        // sets title background color
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E30C00")));
-        bar.isHideOnContentScrollEnabled();
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toptoolbar);
+        setSupportActionBar(mToolbar);
+        TextView title = (TextView) findViewById(R.id.toptoolbartitle);
+        title.setText(R.string.levelup);
 
         scanstate = false;
 
@@ -102,6 +100,7 @@ public class levelup extends AppCompatActivity {
         });
 
         // END OF BAR CODE
+
     }
 
     public void levelup_scannow(View view) {

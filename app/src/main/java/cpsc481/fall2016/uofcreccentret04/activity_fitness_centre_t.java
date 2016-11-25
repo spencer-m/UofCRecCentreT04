@@ -50,8 +50,11 @@ public class activity_fitness_centre_t extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fitness_centre_t);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toptoolbar);
         setSupportActionBar(toolbar);
+        TextView title = (TextView) findViewById(R.id.toptoolbartitle);
+        title.setText(R.string.fitness_centre);
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());

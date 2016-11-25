@@ -22,10 +22,12 @@
         android:background="#E30C00"
         tools:context="cpsc481.fall2016.uofcreccentret04.Home">
 
+        <include layout="@layout/customaction_bar"/>
+
         <ImageView
             android:layout_width="300dp"
             android:layout_height="200dp"
-            android:paddingTop="30dp"
+            android:paddingTop="90dp"
             android:src="@drawable/uclogo"
             android:layout_centerHorizontal="true"
             android:id="@+id/uclogohome" />

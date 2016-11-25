@@ -4,6 +4,7 @@ import android.support.annotation.StringRes;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -18,11 +19,10 @@ public class activities extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activities);
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.customaction_bar);
-        TextView tv = (TextView) findViewById(R.id.headerText);
-        tv.setText(R.string.activities);
-
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toptoolbar);
+        setSupportActionBar(mToolbar);
+        TextView title = (TextView) findViewById(R.id.toptoolbartitle);
+        title.setText(R.string.activities);
 
         // Menu Dock Init
         md = new MenuDock(this);

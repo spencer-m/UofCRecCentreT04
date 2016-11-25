@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,15 +25,11 @@ public class mycalendar extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mycalendar);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.customaction_bar);
-        TextView tv = (TextView) findViewById(R.id.headerText);
-        tv.setText(R.string.mycalendar);
 
-        // sets title background color
-        ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E30C00")));
-        bar.isHideOnContentScrollEnabled();
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toptoolbar);
+        setSupportActionBar(mToolbar);
+        TextView title = (TextView) findViewById(R.id.toptoolbartitle);
+        title.setText(R.string.mycalendar);
 
         // Menu Dock Init
         md = new MenuDock(this);
@@ -42,7 +39,7 @@ public class mycalendar extends AppCompatActivity{
         CalendarHandler ch = new CalendarHandler(this);
 
         // only my bookings will be shown
-        //ch.setWhatType(new String[] {"2", "3"});
+        ch.setWhatType(new String[] {"2", "3"});
 
         // Get a reference for the week view in the layout.
         weekView = (WeekView) findViewById(R.id.weekView);

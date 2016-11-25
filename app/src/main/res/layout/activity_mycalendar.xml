@@ -22,10 +22,13 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="cpsc481.fall2016.uofcreccentret04.Home">
 
+        <include layout="@layout/customaction_bar"/>
+
         <com.alamkanak.weekview.WeekView
             android:id="@+id/weekView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/toptoolbar"
             app:eventTextColor="@android:color/white"
             app:textSize="12sp"
             app:hourHeight="60dp"

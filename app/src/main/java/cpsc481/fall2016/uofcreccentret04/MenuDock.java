@@ -38,29 +38,24 @@ public class MenuDock {
 
                 Intent i = null;
                 if (position == 0)
-                    i = new Intent(view.getContext(),camps.class);
-                else if (position == 1)
-                    i = new Intent(view.getContext(),programs.class);
-                else if (position == 2)
                     i = new Intent(view.getContext(),levelup.class);
-                else if (position == 3)
+                else if (position == 1)
                     i = new Intent(view.getContext(),activities.class);
-                else if (position == 4)
+                else if (position == 2)
                      i = new Intent(view.getContext(),activity_fitness_centre_t.class);
-                else if (position == 5)
+                else if (position == 3)
                     i = new Intent(view.getContext(),Bookings.class);
-                else if (position == 6)
+                else if (position == 4)
                     i = new Intent(view.getContext(),mycalendar.class);
-                else if (position == 7)
+                else if (position == 5)
                     i = new Intent(view.getContext(),Home.class);
                 activity.startActivityForResult(i, 0);
+                activity.finish();
 
             }
         });
 
         String[] menuOptions ={
-                "Camps",
-                "Programs",
                 "Level Up!",
                 "Activities",
                 "Fitness Centre",
@@ -70,8 +65,6 @@ public class MenuDock {
         };
 
         Integer[] menuImgs={
-                R.drawable.menu1,
-                R.drawable.menu1,
                 R.drawable.levelupicon,
                 R.drawable.activitiesicon,
                 R.drawable.fitnesscentreicon,

@@ -22,6 +22,8 @@
         android:background="#E30C00"
         tools:context="cpsc481.fall2016.uofcreccentret04.Home">
 
+        <include layout="@layout/customaction_bar"/>
+
         <ImageView
             android:layout_width="600dp"
             android:layout_height="600dp"

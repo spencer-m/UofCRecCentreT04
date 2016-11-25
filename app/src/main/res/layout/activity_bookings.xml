@@ -9,112 +9,122 @@
     sothree:umanoShadowHeight="@dimen/dockshadow">
 
     <!-- MAIN CONTENT -->
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/activity_bookings"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical"
-        tools:context="cpsc481.fall2016.uofcreccentret04.Bookings">
+        android:layout_height="match_parent">
+
+        <include layout="@layout/customaction_bar"/>
 
 
-        <Spinner
-            android:id="@+id/filter_booking_dropdown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/court_booking_dropdown"
-            android:layout_alignBottom="@+id/court_booking_dropdown"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="15dp"
-            android:entries="@array/filter_options"
-            />
-        <Spinner
-            android:id="@+id/court_booking_dropdown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="37dp"
-            android:entries="@array/courtlist"
-            android:spinnerMode="dropdown" />
-
-        <TextView
-            android:id="@+id/filter_booking_string"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/filter_booking_dropdown"
-            android:layout_alignStart="@id/filter_booking_dropdown"
-            android:layout_marginStart="5dp"
-            android:text="Filter"
-            android:textColor="@color/black" />
-
-        <LinearLayout
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/activity_bookings"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/court_booking_dropdown"
-            android:gravity="center_horizontal"
+            android:layout_height="match_parent"
+            android:background="@color/white"
             android:orientation="vertical"
-            android:layout_marginTop="10dp">
+            tools:context="cpsc481.fall2016.uofcreccentret04.Bookings"
+            android:paddingTop="42dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-                <TextView
-                    android:id="@+id/date_bookings_string"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Date"
-                    android:gravity="center"
-                    android:onClick="openDatePicker"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:paddingEnd="10dp"/>
+            <Spinner
+                android:id="@+id/filter_booking_dropdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/court_booking_dropdown"
+                android:layout_alignBottom="@+id/court_booking_dropdown"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                android:entries="@array/filter_options"
+                />
+            <Spinner
+                android:id="@+id/court_booking_dropdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="37dp"
+                android:entries="@array/courtlist"
+                android:spinnerMode="dropdown" />
 
-                <ImageButton
-                    android:layout_width="25dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/calendar_icon"
-                    android:id="@+id/imageButton"
-                    android:layout_toEndOf="@id/date_bookings_string"
-                    android:onClick="openDatePicker"
-                    />
+            <TextView
+                android:id="@+id/filter_booking_string"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/filter_booking_dropdown"
+                android:layout_alignStart="@id/filter_booking_dropdown"
+                android:layout_marginStart="5dp"
+                android:text="Filter"
+                android:textColor="@color/black" />
 
-            </RelativeLayout>
-
-
-
-            <RelativeLayout
-                android:id="@+id/calendar_booking_holder"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="50dp"
-                android:paddingEnd="10dp"
-                android:paddingTop="10dp"
-                android:layout_weight="1">
+                android:layout_below="@id/court_booking_dropdown"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:id="@+id/calendarcontainer">
 
-                <com.alamkanak.weekview.WeekView
-                    android:id="@+id/weekView"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:columnGap="8dp"
-                    app:dayBackgroundColor="#05000000"
-                    app:eventTextColor="@android:color/white"
-                    app:headerColumnBackground="#ffffffff"
-                    app:headerColumnPadding="8dp"
-                    app:headerColumnTextColor="#8f000000"
-                    app:headerRowBackgroundColor="#ffefefef"
-                    app:headerRowPadding="12dp"
-                    app:hourHeight="60dp"
-                    app:noOfVisibleDays="3"
-                    app:textSize="12sp"
-                    app:todayBackgroundColor="#1848adff" />
+                    android:layout_height="wrap_content" >
+                    <TextView
+                        android:id="@+id/date_bookings_string"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:gravity="center"
+                        android:onClick="openDatePicker"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:paddingEnd="10dp"/>
 
-            </RelativeLayout>
+                    <ImageButton
+                        android:layout_width="25dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/calendar_icon"
+                        android:id="@+id/imageButton"
+                        android:layout_toEndOf="@id/date_bookings_string"
+                        android:onClick="openDatePicker"
+                        />
 
-        </LinearLayout>
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:id="@+id/calendar_booking_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="30dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="10dp"
+                    android:layout_weight="1">
+
+                    <com.alamkanak.weekview.WeekView
+                        android:id="@+id/weekView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:columnGap="8dp"
+                        app:dayBackgroundColor="#05000000"
+                        app:eventTextColor="@android:color/white"
+                        app:headerColumnBackground="#ffffffff"
+                        app:headerColumnPadding="8dp"
+                        app:headerColumnTextColor="#8f000000"
+                        app:headerRowBackgroundColor="#ffefefef"
+                        app:headerRowPadding="12dp"
+                        app:hourHeight="60dp"
+                        app:noOfVisibleDays="3"
+                        app:textSize="12sp"
+                        app:todayBackgroundColor="#1848adff" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

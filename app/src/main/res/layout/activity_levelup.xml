@@ -22,9 +22,12 @@
         android:background="#E30C00"
         tools:context="cpsc481.fall2016.uofcreccentret04.Home">
 
+        <include layout="@layout/customaction_bar"/>
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_below="@id/toptoolbar"
             android:paddingTop="30dp"
             android:src="@drawable/levelup"
             android:layout_centerHorizontal="true"/>
