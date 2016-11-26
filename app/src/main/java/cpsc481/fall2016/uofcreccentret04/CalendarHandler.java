@@ -412,6 +412,10 @@ public class CalendarHandler {
         wv.notifyDatasetChanged();
         writeLocal();
 
+        new AlertDialog.Builder(activity)
+                .setTitle("Booking Cancelled")
+                .setPositiveButton(android.R.string.yes, null).show();
+
     }
 
     public void localBook(WeekViewEvent event) {
@@ -431,6 +435,10 @@ public class CalendarHandler {
         WeekView wv = (WeekView) activity.findViewById(R.id.weekView);
         wv.notifyDatasetChanged();
         writeLocal();
+
+        new AlertDialog.Builder(activity)
+                .setTitle("Booking Confirmed")
+                .setPositiveButton(android.R.string.yes, null).show();
 
     }
 
