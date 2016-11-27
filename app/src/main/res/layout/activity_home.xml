@@ -38,18 +38,40 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/ucnamehome"
             android:layout_below="@id/uclogohome"
-            android:paddingTop="25dp"/>
+            android:paddingTop="25dp"
+            android:layout_marginBottom="20dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="News: \n\nNovember Track Closures\nDecember Track Closures\nDecember Public Skating TImes"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:layout_below="@+id/ucnamehome"
-            android:layout_alignStart="@+id/ucnamehome"
-            android:layout_marginTop="42dp" />
+            android:layout_below="@id/ucnamehome"
+            android:paddingBottom="100dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/news_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="News"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:background="@drawable/bottomborder"
+                android:paddingStart="10dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="November Track Closures"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="15dp"
+                android:onClick="openNovTClosures"
+                android:paddingStart="10dp"/>
+        </LinearLayout>
 
     </RelativeLayout>
     <!-- END MAIN CONTENT -->
