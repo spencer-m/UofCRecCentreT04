@@ -56,4 +56,24 @@ public class Home extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+
+    public void openDecTClosures(View view) {
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(view.getContext());
+        alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        alertDialogBuilder.setTitle("December Track Closures");
+
+        Spanned stat = Html.fromHtml("Today: <strong><font color = '#33A030'>OPEN</font></strong><br><br>Dec. 24-26 - Closed<br>Dec. 31 - Closed");
+
+        alertDialogBuilder.setMessage(stat);
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
 }
