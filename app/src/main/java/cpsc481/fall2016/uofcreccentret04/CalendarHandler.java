@@ -459,8 +459,10 @@ public class CalendarHandler {
 
         final int ID_INDEX = 0, TITLE_INDEX = 1, START_INDEX = 2, END_INDEX = 3;
 
+        // improve this query
+        // it does not persist: the selectionArgs has to be played with to find the right calendar
         String selection = "((" + CalendarContract.Events.CALENDAR_ID + " = ?) OR (" + CalendarContract.Events.CALENDAR_ID + " = ?))";
-        String[] selectionArgs = new String[] {"1", "2"};
+        String[] selectionArgs = new String[] {"4", "5"};
 
         // Get a Cursor over the Events Provider.
         Cursor cursor = activity.getContentResolver().query(CalendarContract.Events.CONTENT_URI, EVENT_PROJECTION, selection, selectionArgs, null);

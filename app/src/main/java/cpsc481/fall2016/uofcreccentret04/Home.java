@@ -38,7 +38,7 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    public void openNovTClosures(View view) {
+    public void openFirstClosures(View view) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(view.getContext());
         alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
             @Override
@@ -47,9 +47,11 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        alertDialogBuilder.setTitle("November Track Closures");
+        alertDialogBuilder.setTitle("January 2017 Track Closures");
 
-        Spanned stat = Html.fromHtml("Today: <strong><font color = '#33A030'>OPEN</font></strong><br><br>Nov. 15 - Closed<br>Nov.21 - Closed");
+        //Spanned stat = Html.fromHtml("Today: <strong><font color = '#33A030'>OPEN</font></strong><br><br>Nov. 15 - Closed<br>Nov.21 - Closed");
+
+        Spanned stat = Html.fromHtml("January 1-7: Closed<br>January 30: Closed");
 
         alertDialogBuilder.setMessage(stat);
 
@@ -57,7 +59,7 @@ public class Home extends AppCompatActivity {
         alertDialog.show();
     }
 
-    public void openDecTClosures(View view) {
+    public void openSecondClosures(View view) {
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(view.getContext());
         alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
@@ -67,9 +69,55 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        alertDialogBuilder.setTitle("December Track Closures");
+        alertDialogBuilder.setTitle("February 2017 Track Closures");
 
-        Spanned stat = Html.fromHtml("Today: <strong><font color = '#33A030'>OPEN</font></strong><br><br>Dec. 24-26 - Closed<br>Dec. 31 - Closed");
+        //Spanned stat = Html.fromHtml("Today: <strong><font color = '#33A030'>OPEN</font></strong><br><br>Dec. 24-26 - Closed<br>Dec. 31 - Closed");
+
+        Spanned stat = Html.fromHtml("February 14: Closed<br>February 18: Closed<br>February 24: Closed");
+
+        alertDialogBuilder.setMessage(stat);
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    public void openThirdClosures(View view) {
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(view.getContext());
+        alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        alertDialogBuilder.setTitle("March 2017 Track Closures");
+
+        //Spanned stat = Html.fromHtml("Today: <strong><font color = '#33A030'>OPEN</font></strong><br><br>Dec. 24-26 - Closed<br>Dec. 31 - Closed");
+
+        Spanned stat = Html.fromHtml("March 1-4: Closed<br>March 22: Closed<br>March 30: Closed");
+
+        alertDialogBuilder.setMessage(stat);
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    public void openFourthClosures(View view) {
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(view.getContext());
+        alertDialogBuilder.setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        alertDialogBuilder.setTitle("April 2017 Track Closures");
+
+        //Spanned stat = Html.fromHtml("Today: <strong><font color = '#33A030'>OPEN</font></strong><br><br>Dec. 24-26 - Closed<br>Dec. 31 - Closed");
+
+        Spanned stat = Html.fromHtml("April 11: Closed<br>April 12: Closed");
 
         alertDialogBuilder.setMessage(stat);
 

@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ucnamehome"
-            android:paddingBottom="100dp"
+            android:paddingBottom="40dp"
             android:background="@color/white">
 
             <TextView
@@ -65,22 +65,43 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="November Track Closures"
+                android:text="January Track Closures"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:layout_marginTop="15dp"
-                android:onClick="openNovTClosures"
+                android:onClick="openFirstClosures"
                 android:paddingStart="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="December Track Closures"
+                android:text="February Track Closures"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:layout_marginTop="15dp"
-                android:onClick="openDecTClosures"
+                android:onClick="openSecondClosures"
                 android:paddingStart="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="March Track Closures"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="15dp"
+                android:onClick="openThirdClosures"
+                android:paddingStart="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="April Track Closures"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="15dp"
+                android:onClick="openFourthClosures"
+                android:paddingStart="10dp"/>
+
         </LinearLayout>
 
     </RelativeLayout>
